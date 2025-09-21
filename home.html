@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Donasi</title>
+    <link rel="stylesheet" href="webdonasi.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="left-section">
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Cari donasi...">
+                <button type="button" class="clear-search-btn" onclick="clearSearch()" style="display: none;">✕</button>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="donasi.html">Donasi</a>
+            <a href="aboutus.html">Tentang Kami</a>
+            <a href="faq.html">FAQ</a>
+        </nav>
+
+        <div class="user-actions">
+            <div class="language-selector">
+                <span>ID</span>
+            </div>
+            <div class="btn-login">
+                <a href="login.html">Login</a>
+            </div>
+
+            <div class="btn-register"> 
+                <a href="daftar.html">Daftar</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="content-grid">
+            <div class="action-buttons">
+                <div class="action-btn" onclick="searchByCategory('pangan')">
+                    <div class="btn-text">Donasi Pangan</div>
+                </div>
+                <div class="action-btn" onclick="searchByCategory('pendidikan')">
+                    <div class="btn-text">Donasi Pendidikan</div>
+                </div>
+                <div class="action-btn" onclick="searchByCategory('kesehatan')">
+                    <div class="btn-text">Donasi Kesehatan</div>
+                </div>
+            </div>
+            
+
+           
+            <div class="wallet-card">
+                <div class="wallet-icon">💰</div>
+                <div class="wallet-info">
+                    <div class="wallet-title">Saldo Anda</div>
+                    <div class="wallet-balance">Rp xxxxx</div>
+                </div>
+                <button class="topup-btn">+ Top Up</button>
+            </div>
+        </div>
+
+        <div class="urgent-section">
+            <div class="urgent-title">Urgent</div>
+            <div class="urgent-cards">
+                <div class="urgent-card">
+                    <div class="card-image">gambar1</div>
+                    <div class="card-text">Dana Terkumpul xx</div>
+                </div>
+                <div class="urgent-card">
+                    <div class="card-image">gambar2</div>
+                    <div class="card-text">Dana Terkumpul xx</div>
+                </div>
+                <div class="urgent-card">
+                    <div class="card-image">gambar3</div>
+                    <div class="card-text">Dana Terkumpul xx</div>
+                </div>
+                <div class="urgent-card">
+                    <div class="card-image">gambar4</div>
+                    <div class="card-text">Dana Terkumpul xx</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white text-black text-center p-3 mt-4">
+    &copy; Kelompok 2
+    </footer>
+    
+    <script src="webdonasi.js"></script>
+</body>
+</html>
