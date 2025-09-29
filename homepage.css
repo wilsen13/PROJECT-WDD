@@ -14,7 +14,7 @@ body {
 
 body {
     font-family: 'Inter', Arial, sans-serif;
-    background: #F6FAF8; /* netral hijau-keputihan agar konsisten */
+    background: #F6FAF8; 
     color: #333;
     line-height: 1.6;
 }
@@ -73,14 +73,36 @@ body {
   }
   .main-section .card:hover img { transform: scale(1.03); }
 
-/* headings & badges */
-.section-heading { font-family: 'Poppins', Arial, sans-serif; font-weight: 700; color: #0F172A; text-align: center; margin: 0 0 18px 0; }
-.card-body h3 { font-family: 'Poppins', Arial, sans-serif; font-size: 18px; margin: 8px 0 6px 0; color: #0F172A; }
-.card-body p { font-size: 14px; color: #475569; }
-.image-badge { position: absolute; top: 12px; left: 12px; background: rgba(16,185,129,.92); color: #fff; padding: 6px 10px; border-radius: 9999px; font-size: 12px; font-weight: 700; }
-.image-wrap { position: relative; }
-  
 
+.section-heading { 
+    font-family: 'Poppins', Arial, sans-serif; 
+    font-weight: 700; 
+    color: #0F172A; 
+    text-align: center; 
+    margin: 0 0 18px 0; 
+}
+.card-body h3 { 
+    font-family: 'Poppins', Arial, sans-serif; 
+    font-size: 18px; 
+    margin: 8px 0 6px 0; 
+    color: #0F172A; 
+}
+.card-body p { 
+    font-size: 14px; 
+    color: #475569;
+}
+.image-badge { position: absolute; 
+    top: 12px; left: 12px; 
+    background: rgba(16,185,129,.92); 
+    color: #fff; padding: 6px 10px; 
+    border-radius: 9999px; 
+    font-size: 12px; 
+    font-weight: 700; 
+}
+.image-wrap { 
+    position: relative; 
+}
+  
 .left-section {
     display: flex;
     align-items: center;
@@ -336,15 +358,17 @@ body {
 }
 
 .btn-login a{
-    color: rgb(6, 1, 1);
+    color: #fff;
     text-decoration: none;
     display: flex;
+    font-family: 'Poppins', Arial, sans-serif;
     
 }
 
 .btn-register a{
     text-decoration: none;
-    color: rgb(1, 0, 0); 
+    color: #fff; 
+    font-family: 'Poppins', Arial, sans-serif;
 }
 
 
