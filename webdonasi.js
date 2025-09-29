@@ -34,7 +34,6 @@ function initializePasswordToggle() {
     });
 }
 
-
 function togglePassword(input, button) {
     if (input.type === 'password') {
 
