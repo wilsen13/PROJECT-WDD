@@ -52,7 +52,7 @@ body {
     flex: 1;
     min-width: 280px;   
     max-width: 350px;
-    background: #fff;
+    background: #F3FAF7;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden;
@@ -61,9 +61,16 @@ body {
     transition: transform .35s ease, box-shadow .35s ease;
     animation: fadeUp .6s ease both;
   }
-  .main-section .cards .card:nth-child(2) { animation-delay: .08s; }
-  .main-section .cards .card:nth-child(3) { animation-delay: .16s; }
-  .main-section .card:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(0,0,0,.12); }
+  .main-section .cards .card:nth-child(2) { 
+    animation-delay: .08s; 
+}
+  .main-section .cards .card:nth-child(3) { 
+    animation-delay: .16s; 
+}
+  .main-section .card:hover { 
+    transform: translateY(-6px); 
+    box-shadow: 0 14px 28px rgba(0,0,0,.12); 
+}
   
   .main-section .card img {
     width: 100%;
