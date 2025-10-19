@@ -578,7 +578,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background-image: url('/image/Gambar_anak2.jpg');
+    background-image: url('../image/Gambar_anak2.jpg');
     background-size: cover;
     background-position: center;
     margin-bottom: 28px;
