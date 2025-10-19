@@ -109,3 +109,97 @@ function togglePassword(input, button) {
         button.title = 'Tampilkan Password';
     }
 }
+
+// Donation Modal Functions
+function openDonationModal(category) {
+    const modal = document.getElementById('donationModal');
+    const modalTitle = document.getElementById('donationModalTitle');
+    
+    // Set title based on category
+    const titles = {
+        'pendidikan': 'Donasi untuk Pendidikan',
+        'kesehatan': 'Donasi untuk Kesehatan',
+        'pangan': 'Donasi untuk Pangan'
+    };
+    
+    modalTitle.textContent = titles[category] || 'Donasi untuk Pendidikan';
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeDonationModal() {
+    const modal = document.getElementById('donationModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(event) {
+    const modal = document.getElementById('donationModal');
+    if (event.target === modal) {
+        closeDonationModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeDonationModal();
+    }
+});
+
+// Handle custom amount input
+document.addEventListener('DOMContentLoaded', function() {
+    const customAmountRadio = document.querySelector('input[value="custom"]');
+    const customAmountInput = document.getElementById('customAmountInput');
+    
+    if (customAmountRadio && customAmountInput) {
+        customAmountRadio.addEventListener('change', function() {
+            if (this.checked) {
+                customAmountInput.style.display = 'block';
+            } else {
+                customAmountInput.style.display = 'none';
+            }
+        });
+    }
+    
+    // Handle form submission
+    const donationForm = document.getElementById('donationForm');
+    if (donationForm) {
+        donationForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const amount = formData.get('amount');
+            const customAmount = formData.get('customAmount');
+            const paymentMethod = formData.get('paymentMethod');
+            const donorName = formData.get('donorName');
+            const donorEmail = formData.get('donorEmail');
+            
+            // Validate form
+            if (!amount || !paymentMethod || !donorName || !donorEmail) {
+                alert('Mohon lengkapi semua field yang diperlukan.');
+                return;
+            }
+            
+            if (amount === 'custom' && (!customAmount || customAmount < 10000)) {
+                alert('Nominal donasi minimal Rp 10.000.');
+                return;
+            }
+            
+            // Here you would typically send the data to your server
+            console.log('Donation Data:', {
+                amount: amount === 'custom' ? customAmount : amount,
+                paymentMethod: paymentMethod,
+                donorName: donorName,
+                donorEmail: donorEmail
+            });
+            
+            // For now, just show a success message
+            alert('Terima kasih! Data donasi Anda telah berhasil dikirim.');
+            closeDonationModal();
+            this.reset();
+        });
+    }
+});
