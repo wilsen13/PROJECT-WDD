@@ -50,17 +50,95 @@
     </section>
 
     <div class="donasi-container">
-        <h2 class="donasi-section-heading">Pilih Kategori Donasi</h2>
+        <h2 class="donasi-section-heading">Kategori Donasi</h2>
         <div class="donasi-cards">
           
           <div class="donasi-card">
             <div class="donasi-card-image">
-              <span class="donasi-card-badge">Pendidikan</span>
-              <img src="image/education.jpg" alt="Pendidikan">
+              <span class="donasi-card-badge">Kesehatan</span>
+              <img src="image/gambar_anak7.jpg" alt="Pendidikan">
             </div>
             <div class="donasi-card-body">
-              <h3 class="donasi-card-title">Pendidikan Untuk Anak Kurang Mampu</h3>
-              <p class="donasi-card-description">Bantu anak-anak kurang mampu mendapatkan akses pendidikan yang layak.</p>
+              <h3 class="donasi-card-title">Temani Perjuangan Mereka Hingga Sembuh: Donasi untuk Anak dengan Kanker.</h3>
+              <p class="donasi-card-description">Di balik senyum manisnya, ia menyimpan semangat juang yang luar biasa. Setiap hari adalah pertempuran melawan penyakit kritis yang menggerogoti tubuh mungilnya. Ruang perawatan menjadi rumahnya, dan obat-obatan menjadi teman sehari-harinya.</p>
+              
+              <!-- Progress Bar -->
+              <div class="donasi-progress-container">
+                <div class="donasi-progress-label">
+                  <span>Progress Penggalangan Dana</span>
+                  <span class="donasi-progress-percentage">37%</span>
+                </div>
+                <div class="donasi-progress-bar">
+                  <div class="donasi-progress-fill" style="width: 37%"></div>
+                </div>
+              </div>
+              
+              <!-- Statistics -->
+              <div class="donasi-card-statistics">
+                <div class="donasi-stat-item">
+                  <div class="donasi-stat-label">Dana Terkumpul</div>
+                  <div class="donasi-stat-value">Rp 32.000.000</div>
+                </div>
+                <div class="donasi-stat-item">
+                  <div class="donasi-stat-label">Jumlah Donatur</div>
+                  <div class="donasi-stat-value">846 Donatur</div>
+                </div>
+              </div>
+              
+              <!-- CTA Button -->
+              <button class="donasi-card-cta-btn" onclick="openDonationModal('pendidikan')">
+                Donasi Sekarang
+              </button>
+            </div>
+          </div>
+
+          <div class="donasi-card">
+            <div class="donasi-card-image">
+              <span class="donasi-card-badge">Kesehatan</span>
+              <img src="image/leukimia-anak.jpg" alt="Pendidikan">
+            </div>
+            <div class="donasi-card-body">
+              <h3 class="donasi-card-title">Leukemia Menguras Tenaganya, Dukungan Kita Mengisi Semangatnya.</h3>
+              <p class="donasi-card-description">Di dalam aliran darahnya, ia bertarung dalam perang yang tak terlihat. Leukemia mungkin mencoba meredupkan cahayanya, tapi ia adalah pejuang. Mata yang terpejam ini sedang mengumpulkan kekuatan untuk esok hari.</p>
+              
+              <!-- Progress Bar -->
+              <div class="donasi-progress-container">
+                <div class="donasi-progress-label">
+                  <span>Progress Penggalangan Dana</span>
+                  <span class="donasi-progress-percentage">45%</span>
+                </div>
+                <div class="donasi-progress-bar">
+                  <div class="donasi-progress-fill" style="width: 75%"></div>
+                </div>
+              </div>
+              
+              <!-- Statistics -->
+              <div class="donasi-card-statistics">
+                <div class="donasi-stat-item">
+                  <div class="donasi-stat-label">Dana Terkumpul</div>
+                  <div class="donasi-stat-value">Rp 46.000.000</div>
+                </div>
+                <div class="donasi-stat-item">
+                  <div class="donasi-stat-label">Jumlah Donatur</div>
+                  <div class="donasi-stat-value">601 Donatur</div>
+                </div>
+              </div>
+              
+              <!-- CTA Button -->
+              <button class="donasi-card-cta-btn" onclick="openDonationModal('pendidikan')">
+                Donasi Sekarang
+              </button>
+            </div>
+          </div>
+
+          <div class="donasi-card">
+            <div class="donasi-card-image">
+              <span class="donasi-card-badge">Kesehatan</span>
+              <img src="image/gambar_anak9.jpg" alt="Pendidikan">
+            </div>
+            <div class="donasi-card-body">
+              <h3 class="donasi-card-title">Kepala Kecil Ini Menanggung Beban Berat: Bantu Ia Lawan Hidrosefalus.</h3>
+              <p class="donasi-card-description">Tatapan mata polos ini menanggung beban yang tak terbayangkan. Kepala adik kecil kita ini terus membesar akibat hidrosefalus, yaitu penumpukan cairan yang menekan otaknya yang masih sangat rapuh. Setiap hari, tekanan ini berisiko menyebabkan kerusakan permanen dan mengancam nyawanya.</p>
               
               <!-- Progress Bar -->
               <div class="donasi-progress-container">
@@ -95,12 +173,12 @@
           <!-- Pendidikan -->
           <div class="donasi-card">
             <div class="donasi-card-image">
-              <span class="donasi-card-badge">Pendidikan</span>
-              <img src="image/education.jpg" alt="Pendidikan">
+              <span class="donasi-card-badge">Kesehatan</span>
+              <img src="image/gambar_anak6.webp" alt="Pendidikan">
             </div>
             <div class="donasi-card-body">
-              <h3 class="donasi-card-title">Pendidikan Untuk Anak Kurang Mampu</h3>
-              <p class="donasi-card-description">Bantu anak-anak kurang mampu mendapatkan akses pendidikan yang layak.</p>
+              <h3 class="donasi-card-title">Bantu Adik Ini Sembuh: Tumor di Wajahnya Butuh Uluran Tangan Kita.</h3>
+              <p class="donasi-card-description">Di balik tatapan matanya yang polos, adik kecil ini menahan beban yang luar biasa. Sebuah tumor yang terus membesar di wajahnya tidak hanya merenggut keceriaannya, tetapi juga membuatnya sulit untuk bermain dan berinteraksi seperti teman-temannya.</p>
               
               <!-- Progress Bar -->
               <div class="donasi-progress-container">
@@ -134,21 +212,21 @@
 
           <div class="donasi-card">
             <div class="donasi-card-image">
-              <span class="donasi-card-badge">Kesehatan</span>
-              <img src="image/kesehatan.jpg" alt="Kesehatan">
+              <span class="donasi-card-badge">Pendidikan</span>
+              <img src="image/gambar_anak8.jpg" alt="Pendidikan">
             </div>
             <div class="donasi-card-body">
-              <h3 class="donasi-card-title">Bantuan Kesehatan Dan Pengobatan</h3>
-              <p class="donasi-card-description">Donasi Anda membantu layanan kesehatan, obat-obatan, hingga perawatan darurat.</p>
+              <h3 class="donasi-card-title">Semangat Tak Berdinding: Bantu Mereka Belajar di Ruang yang Layak.</h3>
+              <p class="donasi-card-description">Lihatlah semangat yang terpancar dari mata mereka. Di dalam ruang kelas sederhana berdinding bambu ini, puluhan anak pedalaman menimba ilmu setiap hari dengan penuh antusiasme.</p>
               
               <!-- Progress Bar -->
               <div class="donasi-progress-container">
                 <div class="donasi-progress-label">
                   <span>Progress Penggalangan Dana</span>
-                  <span class="donasi-progress-percentage">60%</span>
+                  <span class="donasi-progress-percentage">20%</span>
                 </div>
                 <div class="donasi-progress-bar">
-                  <div class="donasi-progress-fill" style="width: 60%"></div>
+                  <div class="donasi-progress-fill" style="width: 20%"></div>
                 </div>
               </div>
               
@@ -156,11 +234,11 @@
               <div class="donasi-card-statistics">
                 <div class="donasi-stat-item">
                   <div class="donasi-stat-label">Dana Terkumpul</div>
-                  <div class="donasi-stat-value">Rp 45.000.000</div>
+                  <div class="donasi-stat-value">Rp 3.123.000</div>
                 </div>
                 <div class="donasi-stat-item">
                   <div class="donasi-stat-label">Jumlah Donatur</div>
-                  <div class="donasi-stat-value">892 Donatur</div>
+                  <div class="donasi-stat-value">34 Donatur</div>
                 </div>
               </div>
               
@@ -174,11 +252,11 @@
           <div class="donasi-card">
             <div class="donasi-card-image">
               <span class="donasi-card-badge">Pangan</span>
-              <img src="image/pangan.webp" alt="Pangan">
+              <img src="image/anak_kurang_gizi.jpg" alt="Pangan">
             </div>
             <div class="donasi-card-body">
-              <h3 class="donasi-card-title">Pangan Dan Kebutuhan Pokok</h3>
-              <p class="donasi-card-description">Bantu keluarga yang kesulitan memenuhi kebutuhan dasar sehari-hari.</p>
+              <h3 class="donasi-card-title">Satu Donasi, Satu Nyawa: Lawan Krisis Gizi Buruk Sekarang.k</h3>
+              <p class="donasi-card-description">Ini bukan sekadar foto, ini adalah panggilan darurat. Gizi buruk merenggut masa kecil mereka. Jangan palingkan wajah Anda. Bantuan pangan Anda dibutuhkan sekarang juga untuk menyelamatkan nyawa mereka. Kirim bantuan sekarang.</p>
               
               <!-- Progress Bar -->
               <div class="donasi-progress-container">
