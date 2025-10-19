@@ -55,6 +55,25 @@ body {
     color: #666;
 }
 
+.hero-section .search-container {
+    width: 60%;
+    margin: 20px auto;
+}
+
+.hero-section .search-bar {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+.hero-section .search-bar:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
 /* FAQ Section */
 .faq-section {
     max-width: 800px;
