@@ -11,16 +11,21 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="left-section">
-            <div class="search-container">
-                <input type="text" class="search-bar" placeholder="Cari donasi...">
-                <button type="button" class="clear-search-btn" onclick="clearSearch()" style="display: none;">✕</button>
-            </div>
+        <!-- Logo -->
+        <div class="logo">
+            <img src="image/Logo.png" alt="SatuHati Logo">
         </div>
 
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Cari Donasi" id="searchInput">
+            <div class="search-results" id="searchResults"></div>
+        </div>
+        
         <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="donasi.html">Donasi</a>
+            <a href="news.html">News</a>
             <a href="aboutus.html">Tentang Kami</a>
             <a href="faq.html">FAQ</a>
         </nav>

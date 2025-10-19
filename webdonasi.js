@@ -3,6 +3,198 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePasswordToggle();
     initializeCounters();
     initializeAboutReveal();
+    initializeSearch();
+});
+
+// Search functionality
+function initializeSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    
+    if (!searchInput || !searchResults) return;
+    
+    // Donation data - this would typically come from a database
+    const donationData = [
+        {
+            id: 1,
+            title: "Temani Perjuangan Mereka Hingga Sembuh: Donasi untuk Anak dengan Kanker",
+            image: "image/gambar_anak7.jpg",
+            category: "Kesehatan",
+            progress: 37,
+            amount: "Rp 32.000.000",
+            donors: "846 Donatur"
+        },
+        {
+            id: 2,
+            title: "Leukemia Menguras Tenaganya, Dukungan Kita Mengisi Semangatnya",
+            image: "image/leukimia-anak.jpg",
+            category: "Kesehatan",
+            progress: 45,
+            amount: "Rp 46.000.000",
+            donors: "601 Donatur"
+        },
+        {
+            id: 3,
+            title: "Kepala Kecil Ini Menanggung Beban Berat: Bantu Ia Lawan Hidrosefalus",
+            image: "image/gambar_anak9.jpg",
+            category: "Kesehatan",
+            progress: 75,
+            amount: "Rp 75.000.000",
+            donors: "1,245 Donatur"
+        },
+        {
+            id: 4,
+            title: "Bantu Adik Ini Sembuh: Tumor di Wajahnya Butuh Uluran Tangan Kita",
+            image: "image/gambar_anak6.webp",
+            category: "Kesehatan",
+            progress: 75,
+            amount: "Rp 75.000.000",
+            donors: "1,245 Donatur"
+        },
+        {
+            id: 5,
+            title: "Semangat Tak Berdinding: Bantu Mereka Belajar di Ruang yang Layak",
+            image: "image/gambar_anak8.jpg",
+            category: "Pendidikan",
+            progress: 20,
+            amount: "Rp 3.123.000",
+            donors: "34 Donatur"
+        },
+        {
+            id: 6,
+            title: "Satu Donasi, Satu Nyawa: Lawan Krisis Gizi Buruk Sekarang",
+            image: "image/anak_kurang_gizi.jpg",
+            category: "Pangan",
+            progress: 90,
+            amount: "Rp 90.000.000",
+            donors: "2,156 Donatur"
+        }
+    ];
+    
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        const query = this.value.trim();
+        
+        if (query.length < 2) {
+            searchResults.classList.remove('show');
+            return;
+        }
+        
+        searchTimeout = setTimeout(() => {
+            performSearch(query, donationData, searchResults);
+        }, 300);
+    });
+    
+    // Handle Enter key
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const query = this.value.trim();
+            const isDonationPage = window.location.pathname.includes('donasi.html');
+
+            if (isDonationPage) {
+                // On donation page: do not navigate, just ensure filtering occurs
+                e.preventDefault();
+                const event = new Event('input', { bubbles: true });
+                this.dispatchEvent(event);
+                return;
+            }
+
+            // On other pages: always navigate to donation page with query (even if no local results)
+            e.preventDefault();
+            const target = `donasi.html${query ? `?search=${encodeURIComponent(query)}` : ''}`;
+            window.location.href = target;
+        }
+    });
+    
+    // Hide search results when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.classList.remove('show');
+        }
+    });
+}
+
+function performSearch(query, donationData, searchResults) {
+    const filteredResults = donationData.filter(donation => 
+        donation.title.toLowerCase().includes(query.toLowerCase()) ||
+        donation.category.toLowerCase().includes(query.toLowerCase())
+    );
+    
+    displaySearchResults(filteredResults, searchResults, query);
+}
+
+function displaySearchResults(results, container, query) {
+    if (results.length === 0) {
+        container.innerHTML = `
+            <div class="search-no-results">
+                Tidak ada donasi yang ditemukan untuk "${query}"
+            </div>
+        `;
+    } else {
+        container.innerHTML = results.map(donation => `
+            <div class="search-result-item" onclick="selectDonation(${donation.id})">
+                <img src="${donation.image}" alt="${donation.title}" class="search-result-image">
+                <div class="search-result-content">
+                    <div class="search-result-badge">${donation.category}</div>
+                    <div class="search-result-title">${donation.title}</div>
+                    <div class="search-result-progress">${donation.progress}% • ${donation.amount} • ${donation.donors}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    container.classList.add('show');
+}
+
+function selectDonation(donationId) {
+    // Navigate to donation page and scroll to specific donation
+    window.location.href = `donasi.html?donation=${donationId}`;
+}
+
+// Handle URL parameters for donation page
+function handleDonationPageParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const donationId = urlParams.get('donation');
+    const searchQuery = urlParams.get('search');
+    
+    if (donationId) {
+        // Scroll to specific donation and highlight it
+        const donationElement = document.getElementById(`donation-${donationId}`);
+        if (donationElement) {
+            donationElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            donationElement.style.border = '3px solid #0ea594';
+            donationElement.style.borderRadius = '12px';
+            donationElement.style.boxShadow = '0 8px 25px rgba(14, 165, 148, 0.3)';
+            
+            // Remove highlight after 5 seconds
+            setTimeout(() => {
+                donationElement.style.border = '';
+                donationElement.style.borderRadius = '';
+                donationElement.style.boxShadow = '';
+            }, 5000);
+        }
+    }
+    
+    if (searchQuery) {
+        // Pre-fill search input and show results
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.value = searchQuery;
+            searchInput.focus();
+            // Trigger search
+            const event = new Event('input', { bubbles: true });
+            searchInput.dispatchEvent(event);
+        }
+    }
+}
+
+// Initialize donation page functionality
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.includes('donasi.html')) {
+        handleDonationPageParams();
+    }
 });
 
 

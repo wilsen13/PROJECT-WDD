@@ -12,16 +12,22 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="left-section">
-            <div class="search-container">
-                <input type="text" class="search-bar" placeholder="Search">
-            </div>
+        <!-- Logo -->
+        <div class="logo">
+            <img src="image/Logo.png" alt="SatuHati Logo">
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Cari Donasi" id="searchInput">
+            <div class="search-results" id="searchResults"></div>
         </div>
 
       
         <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="donasi.html">Donasi</a>
+            <a href="news.html">News</a>
             <a href="aboutus.html">Tentang Kami</a>
             <a href="faq.html">FAQ</a>
         </nav>
@@ -53,7 +59,7 @@
         <h2 class="donasi-section-heading">Kategori Donasi</h2>
         <div class="donasi-cards">
           
-          <div class="donasi-card">
+          <div class="donasi-card" id="donation-1">
             <div class="donasi-card-image">
               <span class="donasi-card-badge">Kesehatan</span>
               <img src="image/gambar_anak7.jpg" alt="Pendidikan">
@@ -92,7 +98,7 @@
             </div>
           </div>
 
-          <div class="donasi-card">
+          <div class="donasi-card" id="donation-2">
             <div class="donasi-card-image">
               <span class="donasi-card-badge">Kesehatan</span>
               <img src="image/leukimia-anak.jpg" alt="Pendidikan">
@@ -131,7 +137,7 @@
             </div>
           </div>
 
-          <div class="donasi-card">
+          <div class="donasi-card" id="donation-3">
             <div class="donasi-card-image">
               <span class="donasi-card-badge">Kesehatan</span>
               <img src="image/gambar_anak9.jpg" alt="Pendidikan">
@@ -171,7 +177,7 @@
           </div>
           
           <!-- Pendidikan -->
-          <div class="donasi-card">
+          <div class="donasi-card" id="donation-4">
             <div class="donasi-card-image">
               <span class="donasi-card-badge">Kesehatan</span>
               <img src="image/gambar_anak6.webp" alt="Pendidikan">
@@ -210,7 +216,7 @@
             </div>
           </div>
 
-          <div class="donasi-card">
+          <div class="donasi-card" id="donation-5">
             <div class="donasi-card-image">
               <span class="donasi-card-badge">Pendidikan</span>
               <img src="image/gambar_anak8.jpg" alt="Pendidikan">
@@ -249,7 +255,7 @@
             </div>
           </div>
 
-          <div class="donasi-card">
+          <div class="donasi-card" id="donation-6">
             <div class="donasi-card-image">
               <span class="donasi-card-badge">Pangan</span>
               <img src="image/anak_kurang_gizi.jpg" alt="Pangan">
