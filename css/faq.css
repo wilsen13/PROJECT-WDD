@@ -32,35 +32,27 @@ body {
     opacity: 0.9;
 }
 
-.search-bar {
-    max-width: 500px;
-    margin: 0 auto;
-    position: relative;
+.search-container {
+    margin: 20px 0;
 }
 
-.search-bar input {
-    width: 100%;
-    padding: 15px 50px 15px 20px;
-    border: none;
-    border-radius: 25px;
-    font-size: 1rem;
-    outline: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+.input-group {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.search-bar input:focus {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    transform: translateY(-2px);
+.input-group .form-control {
+    border-right: none;
+    padding: 12px 20px;
 }
 
-.search-bar::after {
-    content: '🔍';
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2rem;
+.input-group .input-group-text {
+    background-color: white;
+    border-left: none;
+    padding: 12px 20px;
+}
+
+.input-group .bi-search {
+    color: #666;
 }
 
 /* FAQ Section */

@@ -158,6 +158,29 @@ body {
     margin: 0 20px;
 }
 
+.search-container {
+    flex: 1;
+    margin: 0 2rem;
+}
+
+.search-container .input-group {
+    width: 100%;
+}
+
+.search-container .form-control {
+    border-right: none;
+    padding: 0.5rem 1rem;
+}
+
+.search-container .input-group-text {
+    background-color: white;
+    border-left: none;
+}
+
+.search-container .bi-search {
+    color: #666;
+}
+
 .search-bar {
     width: 100%;
     padding: 10px 15px;
@@ -448,6 +471,29 @@ body {
     align-items: center;
 }
 
+.search-container {
+    flex: 1;
+    margin: 0 2rem;
+}
+
+.search-container .input-group {
+    width: 100%;
+}
+
+.search-container .form-control {
+    border-right: none;
+    padding: 0.5rem 1rem;
+}
+
+.search-container .input-group-text {
+    background-color: white;
+    border-left: none;
+}
+
+.search-container .bi-search {
+    color: #666;
+}
+
 .search-bar {
     background: #f1f5f9;
     border: 1px solid #d1d5db;
@@ -532,7 +578,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background-image: url('image/Gambar_anak2.jpg');
+    background-image: url('/image/Gambar_anak2.jpg');
     background-size: cover;
     background-position: center;
     margin-bottom: 28px;
