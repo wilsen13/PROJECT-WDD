@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePasswordToggle();
     initializeCounters();
     initializeAboutReveal();
+    initializeGlobalReveal();
     initializeSearch();
 });
 
@@ -242,8 +243,30 @@ function initializeAboutReveal(){
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
     targets.forEach(function(el){ io.observe(el); });
+}
+
+// Global reveal initializer for all pages except login/register
+function initializeGlobalReveal(){
+    var path = window.location.pathname;
+    if (path.includes('login.html') || path.includes('daftar.html')) return;
+
+    // Add .reveal to common sections if not already present
+    try {
+        var candidates = [
+            '.hero', '.hero-section', '.news-hero', '.donasi-hero',
+            '.container.main-section', '.cards', '.news-container',
+            '.news-card', '.donasi-container', '.faq-section', '.cta-section'
+        ];
+        candidates.forEach(function(sel){
+            document.querySelectorAll(sel).forEach(function(el){
+                if (!el.classList.contains('reveal')) el.classList.add('reveal');
+            });
+        });
+    } catch(e) { /* no-op */ }
+
+    initializeAboutReveal();
 }
 
 function initializeCounters() {

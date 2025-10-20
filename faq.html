@@ -14,8 +14,11 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">
-            <a href="index.html"><img src="image/Logo.png" alt="SatuHati Logo"></a>
+        <div class="brand">
+            <div class="logo">
+                <a href="index.html"><img src="image/Logo.png" alt="SatuHati Logo"></a>
+            </div>
+            <a href="index.html" class="brand-name">SatuHati</a>
         </div>
 
         <!-- Search Bar -->
@@ -138,8 +141,26 @@
     <section class="cta-section">
         <h2>Masih Butuh Bantuan?</h2>
         <p>Jika Anda tidak menemukan jawaban yang Anda cari, jangan ragu untuk menghubungi tim support kami.</p>
-        <a href="#" class="cta-button">Hubungi Kami</a>
+        <a href="#" class="cta-button" id="openContact">Hubungi Kami</a>
     </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-overlay"></div>
+        <div class="contact-modal-content">
+            <div class="contact-modal-header">Hubungi Kami</div>
+            <button class="contact-close" id="closeContact">×</button>
+            <div class="contact-modal-body">
+                <form id="contactPopupForm" class="contact-form">
+                    <input type="text" id="mName" placeholder="Nama lengkap" required>
+                    <input type="email" id="mEmail" placeholder="Email" required>
+                    <input type="text" id="mSubject" placeholder="Subjek" required>
+                    <textarea id="mMessage" rows="4" placeholder="Tulis pesan Anda..." required></textarea>
+                    <button type="submit" class="contact-submit">Kirim</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <footer style="background-color: #f8f9fa; padding: 60px 0 20px; border-top: 2px solid #e9ecef;">
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">

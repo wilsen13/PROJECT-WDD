@@ -6,6 +6,11 @@ body {
     padding: 0;
   }
 
+/* Override navbar behavior for this page: non-sticky to match others */
+.navbar {
+  position: static;
+}
+
 h1 {
     padding-top: 5px;
 }
@@ -305,6 +310,19 @@ h1 {
 }
 
 
+
+/* Bridge paragraph under achievements */
+.about-bridge { 
+  max-width: 900px; 
+  margin: 0 auto 50px auto; 
+  padding: 0 20px; 
+  text-align: center; 
+}
+.about-bridge p { 
+  color: #475569; 
+  margin: 0 0 14px 0; 
+  line-height: 1.8; 
+}
 
 
 
