@@ -1,22 +1,37 @@
 <?php
-include 'config.php';
+session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $mysqli->real_escape_string($_POST['email']);
-    $password = $mysqli->real_escape_string($_POST['password']);
+if(isset($_POST['submit'])){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-    $result = $mysqli->query($query);
+    $conn = new PDO("mysql:host=localhost;dbname=donation_web", "root", "");
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $_SESSION['user_id'] = $row['user_id'];
-        $_SESSION['name'] = $row['name'];
-        $_SESSION['email'] = $row['email'];
-        //header("Location: dashboard.php");
-        exit;
+    $query = "SELECT * FROM users WHERE email = ?";
+    $result = $conn->prepare($query);
+    $result->execute([$email]);
+
+    if($row = $result->fetch()){
+        if(md5($password) == $row['password']){
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['full_name'] = $row['full_name'];
+
+            // redirect to homepage after successful login
+            header('Location: ../index.html');
+            exit();
+        } else {
+            // invalid password
+            session_unset();
+            session_destroy();
+            header('Location: ../login.html?login=failed');
+            exit();
+        }
     } else {
-        $error = "Email atau Password salah!";
+        // user not found
+        session_unset();
+        session_destroy();
+        header('Location: ../login.html?login=notfound');
+        exit();
     }
 }
 ?>
