@@ -16,7 +16,12 @@ if(isset($_POST['submit'])){
             $_SESSION['email'] = $row['email'];
             $_SESSION['full_name'] = $row['full_name'];
 
-            // redirect to homepage after successful login
+            $user_fullname = $user['full_name'];
+            $end_time = time() + (86400 * 30); //30 hari 
+
+            setcookie("user_full_name", $user_fullname, $end_time, "/");
+
+            // kembali ke homepage kalau login berhasil
             header('Location: ../index.html');
             exit();
         } else {
