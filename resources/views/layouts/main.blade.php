@@ -37,16 +37,36 @@
 
         <div class="user-actions">
             <div class="language-selector"><span>ID</span></div>
+            
             @auth
-                <div class="btn-login"><a href="#">Halo, {{ Auth::user()->full_name }}</a></div>
-                <form action="{{ url('/logout') }}" method="POST" style="display:inline;">
+    <div class="dropdown ms-3">
+        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark fw-bold" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            Halo, {{ Auth::user()->full_name }}
+        </a>
+        
+        <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser1">
+            <li>
+                <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                    <i class="bi bi-person-gear me-2"></i> Edit Profil
+                </a>
+            </li>
+            
+            <li><hr class="dropdown-divider"></li>
+            
+            <li>
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" style="background:none; border:none; color:red; cursor:pointer;">Logout</button>
+                    <button type="submit" class="dropdown-item text-danger">
+                        <i class="bi bi-box-arrow-right me-2"></i> Logout
+                    </button>
                 </form>
-            @else
-                <div class="btn-login"><a href="{{ url('/login') }}">Login</a></div>
-                <div class="btn-register"><a href="{{ url('/register') }}">Daftar</a></div>
-            @endauth
+            </li>
+        </ul>
+    </div>
+@else
+    <div class="btn-login"><a href="{{ route('login') }}">Login</a></div>
+    <div class="btn-register"><a href="{{ route('register') }}">Daftar</a></div>
+@endauth
         </div>
     </div>
     @yield('content')

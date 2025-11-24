@@ -24,9 +24,7 @@ class AuthController extends Controller
             'full_name' => $request->full_name,
             'email' => $request->email,
             'no_telp' => $request->no_telp,
-            'registration_date' => now(),
-            // PENTING: Laravel pakai Bcrypt, bukan MD5. 
-            // Nanti saya jelaskan di bawah.
+            // 'registration_date' => now(),
             'password' => Hash::make($request->password) 
         ]);
 
