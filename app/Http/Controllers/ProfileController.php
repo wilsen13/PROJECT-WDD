@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
-    // 1. Menampilkan Halaman Profil
+   
     public function edit()
     {
         
@@ -17,12 +17,12 @@ class ProfileController extends Controller
         return view('profile.edit', compact('user'));
     }
 
-    // 2. Memproses Update Data Diri & Password
+    //update data diri dan password
     public function update(Request $request)
     {
         $user = Auth::user(); // Ambil data user yang sedang login
         
-        // Validasi Input
+        // validate input
         $request->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id, // Email boleh sama kalau punya sendiri
@@ -31,16 +31,16 @@ class ProfileController extends Controller
             'new_password' => 'nullable|min:6|confirmed', // Harus ada konfirmasi (new_password_confirmation)
         ]);
 
-        // Cek Password Lama (Jika mau ganti password)
-        if ($request->filled('current_password')) {
-            if (!Hash::check($request->current_password, $user->password)) {
-                return back()->withErrors(['current_password' => 'Password saat ini salah.']);
-            }
-            // Jika benar, update password baru
-            $user->password = Hash::make($request->new_password);
-        }
+        // // Cek Password Lama (Jika mau ganti password)
+        // if ($request->filled('current_password')) {
+        //     if (!Hash::check($request->current_password, $user->password)) {
+        //         return back()->withErrors(['current_password' => 'Password saat ini salah.']);
+        //     }
+        //     // Jika benar, update password baru
+        //     $user->password = Hash::make($request->new_password);
+        // }
 
-        // Update Data Lainnya
+        // update data 
         $user->full_name = $request->full_name;
         $user->email = $request->email;
         $user->no_telp = $request->no_telp;
@@ -49,26 +49,26 @@ class ProfileController extends Controller
         return back()->with('success', 'Profil berhasil diperbarui!');
     }
 
-    // 3. Memproses Upload Foto Profil
+    // upload foto profil
     public function uploadPhoto(Request $request)
     {
         $request->validate([
-            // Foto wajib diisi, harus gambar, max 2MB
+            //ketentuan gambar profil
             'profile_pic' => 'required|image|mimes:jpg,jpeg,png|max:2048', 
         ]);
 
         $user = Auth::user();
 
         if ($request->hasFile('profile_pic')) {
-            // Hapus foto lama jika ada (dan bukan foto default)
+            // untuk menghapus foto lama
             if ($user->profile_photo_path && Storage::disk('public')->exists($user->profile_photo_path)) {
                 Storage::disk('public')->delete($user->profile_photo_path);
             }
 
-            // Simpan foto baru ke folder 'storage/app/public/profile-photos'
+            // simpan foto ke folder yang ada 
             $path = $request->file('profile_pic')->store('profile-photos', 'public');
             
-            // Simpan path (lokasi file) ke database
+            // simpan path ke dalam database
             $user->profile_photo_path = $path;
             $user->save();
         }

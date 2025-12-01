@@ -6,7 +6,6 @@ body {
     padding: 0;
   }
 
-/* Override navbar behavior for this page: non-sticky to match others */
 .navbar {
   position: static;
 }

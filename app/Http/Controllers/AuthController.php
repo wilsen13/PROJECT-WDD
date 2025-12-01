@@ -8,10 +8,9 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // --- PENGGANTI REGISTER.PHP ---
     public function register(Request $request)
     {
-        // 1. Validasi 
+        //bagian validasi
         $request->validate([
             'full_name' => 'required',
             'email' => 'required|email|unique:users', 
@@ -19,7 +18,7 @@ class AuthController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        // 2. Simpan ke Database
+     //untuk menyimpan kedatabase
         User::create([
             'full_name' => $request->full_name,
             'email' => $request->email,
@@ -31,7 +30,6 @@ class AuthController extends Controller
         return redirect('/login')->with('success', 'Registrasi berhasil!');
     }
 
-    // --- PENGGANTI LOGIN.PHP ---
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -39,7 +37,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        // Auth::attempt otomatis cek email & hash password
+        // buat cek email dan password (validasi)
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             
@@ -47,7 +45,7 @@ class AuthController extends Controller
             return redirect()->intended('/'); // Ke homepage
         }
 
-        // Kalau gagal
+        // kalau gagal
         return back()->with('error', 'Email atau password salah.');
     }
 

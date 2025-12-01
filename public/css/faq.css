@@ -11,9 +11,9 @@ body {
     background-color: #f8f9fa;
 }
 
-/* Match navbar behavior with other pages (non-sticky) */
+/* biar navbar nempel diatas */ 
 .navbar { position: static; }
-/* Ensure override wins even if global .navbar is sticky */
+
 body .navbar { position: static; top: auto; }
 
 /* Hero Section */
