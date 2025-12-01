@@ -34,7 +34,7 @@
         gap: 0;
     }
 
-    /* SIDEBAR LEFT - PROFILE INFO */
+
     .profile-sidebar {
         background: linear-gradient(135deg, #00a989 0%, #00c2a3 100%);
         padding: 3rem 2rem;
@@ -143,7 +143,7 @@
         border-top: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    /* CONTENT RIGHT */
+    /* konten profil */
     .profile-content {
         padding: 3rem;
         display: flex;
@@ -227,7 +227,7 @@
         color: #bdc3c7;
     }
 
-    /* ALERT */
+    /* window alert */
     .alert {
         border-radius: 10px;
         padding: 1rem 1.5rem;
@@ -251,7 +251,7 @@
         padding-left: 1.5rem;
     }
 
-    /* BUTTON */
+    /* button */
     .btn-submit-profile {
         background: linear-gradient(135deg, #00a989 0%, #00c2a3 100%);
         border: none;
@@ -326,7 +326,7 @@
 
             <div class="card profile-card">
                 <div class="profile-grid">
-                    <!-- SIDEBAR -->
+                    <!-- BAGIAN SIDEBAR -->
                     <div class="profile-sidebar">
                         <div class="profile-avatar-wrapper" onclick="document.getElementById('profile_pic_input').click();">
                             <img id="profile-preview" 
@@ -345,17 +345,17 @@
                         </div>
                     </div>
 
-                    <!-- CONTENT -->
+                    <!-- BAGIAN konten -->
                     <div class="profile-content">
                         <div class="content-header">
                             <h3>Pengaturan Akun</h3>
                             <p>Kelola informasi profil Anda dengan aman</p>
                         </div>
 
-                        <!-- HIDDEN INPUT -->
+                        <!-- UNTUK HIDDEN INPUT -->
                         <input type="file" name="profile_pic" id="profile_pic_input" onchange="previewImage(event);" accept="image/*">
 
-                        <!-- ALERTS -->
+                        <!-- BAGIAN ALERTS (window) -->
                         @if (session('success'))
                             <div class="alert alert-success">
                                 <strong>✓ Berhasil!</strong> {{ session('success') }}
@@ -372,7 +372,7 @@
                             </div>
                         @endif
 
-                        <!-- TABS -->
+                        <!-- bagian tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="true">
@@ -381,7 +381,7 @@
                             </li>
                         </ul>
 
-                        <!-- TAB CONTENT -->
+                        <!-- konten tab -->
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
                                 <div class="form-group">

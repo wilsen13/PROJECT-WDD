@@ -20,7 +20,7 @@
                 <h3 class="feature-title">Memberi Donasi</h3>
                 <p class="feature-desc">Kontribusi Anda membantu meringankan beban saudara kita yang sedang kesulitan.</p>
             </article>
-            <article class="feature-card">
+            <article class="featusre-card">
                 <div class="feature-icon"><i class="bi bi-person-hearts"></i></div>
                 <h3 class="feature-title">Sebarkan Kebaikan</h3>
                 <p class="feature-desc">Jadilah bagian dari perubahan dengan membagikan informasi dan mengajak orang lain untuk berdonasi.</p>
