@@ -9,14 +9,22 @@ class News extends Model
 {
     use HasFactory;
     
+ 
     protected $table = 'news';
     protected $primaryKey = 'newsID';
+    const UPDATED_AT = null;
+
 
     protected $fillable = [
-        'user_id', 'Judul', 'Deskripsi', 'VideoURL', 'TanggalPublikasi'
+        'user_id',    
+        'Judul',      
+        'Deskripsi',  
+        'VideoURL',   
     ];
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    // Relasi ke User yang mengupdate berita (admin)
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

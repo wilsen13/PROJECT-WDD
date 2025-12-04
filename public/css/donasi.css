@@ -75,8 +75,8 @@
 /* Enhanced Donation Cards */
 .donasi-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
     margin-bottom: 40px;
 }
 
@@ -98,8 +98,9 @@
 
 .donasi-card-image {
     position: relative;
-    height: 220px;
+    height: 200px;
     overflow: hidden;
+    background-color: #F1F5F9;
 }
 
 .donasi-card-image img {
@@ -107,6 +108,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    display: block;
 }
 
 .donasi-card:hover .donasi-card-image img {
@@ -127,40 +129,42 @@
 }
 
 .donasi-card-body {
-    padding: 24px;
+    padding: 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 12px;
 }
 
 .donasi-card-title {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #0F172A;
-    margin-bottom: 12px;
+    margin: 0;
     line-height: 1.3;
 }
 
 .donasi-card-description {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #64748B;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    line-height: 1.4;
+    margin: 0;
     flex: 1;
+}
 }
 
 /* Progress Bar Styles */
 .donasi-progress-container {
-    margin: 20px 0;
+    margin: 0;
 }
 
 .donasi-progress-label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
     color: #64748B;
     font-weight: 500;
 }
@@ -173,7 +177,7 @@
 
 .donasi-progress-bar {
     width: 100%;
-    height: 10px;
+    height: 8px;
     background-color: #F1F5F9;
     border-radius: 8px;
     overflow: hidden;
@@ -208,15 +212,15 @@
 .donasi-card-statistics {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 20px 0;
+    gap: 10px;
+    margin: 0;
 }
 
 .donasi-stat-item {
     text-align: center;
-    padding: 16px 12px;
+    padding: 12px 10px;
     background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
-    border-radius: 12px;
+    border-radius: 10px;
     border: 1px solid #E2E8F0;
     transition: all 0.3s ease;
 }
@@ -227,16 +231,16 @@
 }
 
 .donasi-stat-label {
-    font-size: 0.8rem;
-    color: #64748B;
-    margin-bottom: 6px;
-    font-weight: 500;
+    font-size: 0.75rem;
+    color: #94A3B8;
+    margin-bottom: 4px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
 }
 
 .donasi-stat-value {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #0ea594;
     font-family: 'Poppins', sans-serif;
@@ -245,31 +249,34 @@
 /* CTA Button Styles */
 .donasi-card-cta-btn {
     width: 100%;
-    padding: 14px 24px;
+    padding: 12px 20px;
     background: linear-gradient(135deg, #0ea594 0%, #0b7f5d 100%);
     color: white;
     border: none;
-    border-radius: 12px;
-    font-size: 1rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 20px;
-    box-shadow: 0 4px 15px rgba(14, 165, 148, 0.3);
+    margin-top: 0;
+    box-shadow: 0 4px 12px rgba(14, 165, 148, 0.25);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
 .donasi-card-cta-btn:hover {
     background: linear-gradient(135deg, #0b7f5d 0%, #0ea594 100%);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(14, 165, 148, 0.4);
+    box-shadow: 0 8px 20px rgba(14, 165, 148, 0.35);
 }
 
 .donasi-card-cta-btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(14, 165, 148, 0.3);
+    box-shadow: 0 4px 12px rgba(14, 165, 148, 0.25);
 }
 
 /* Donasi Footer */
@@ -284,6 +291,13 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .donasi-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .donasi-container {
         padding: 30px 15px;

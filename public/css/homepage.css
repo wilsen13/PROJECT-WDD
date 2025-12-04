@@ -26,7 +26,7 @@ body {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
+    position: static;
     top: 0;
     z-index: 100;
     min-height: 70px;
@@ -102,6 +102,91 @@ body {
     transform: translateY(-1px);
 }
 
+/* Navbar User Section */
+.navbar-user-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-user {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    padding: 8px 16px !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s ease !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-user:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.dropdown-menu {
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    padding: 8px 0 !important;
+    min-width: 180px !important;
+}
+
+.dropdown-item {
+    padding: 12px 16px !important;
+    color: #333 !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    font-size: 0.95rem !important;
+}
+
+.dropdown-item:hover {
+    background-color: #F0F4F8 !important;
+    color: #0ea594 !important;
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: #FFE8E8 !important;
+    color: #E63946 !important;
+}
+
+.dropdown-divider {
+    margin: 6px 0 !important;
+    opacity: 0.15 !important;
+}
+
+/* Button Styling */
+.btn-login,
+.btn-register {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.btn-login {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-register {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-login:hover,
+.btn-register:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
 /* Responsive navbar */
 @media (max-width: 768px) {
     .navbar {
@@ -119,14 +204,28 @@ body {
         font-size: 14px;
     }
     
-    .navbar .user-actions {
+    .navbar-user-section {
         gap: 10px;
     }
     
-    .navbar .btn-login a,
-    .navbar .btn-register a {
+    .btn-user {
+        padding: 6px 12px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .btn-login,
+    .btn-register {
         padding: 6px 12px;
         font-size: 14px;
+    }
+    
+    .dropdown-menu {
+        min-width: 150px !important;
+    }
+    
+    .dropdown-item {
+        padding: 10px 12px !important;
+        font-size: 0.9rem !important;
     }
 }
 

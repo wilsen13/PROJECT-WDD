@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'SatuHati')</title>
     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
@@ -35,38 +35,33 @@
             <a href="{{ url('/faq') }}">FAQ</a>
         </nav>
 
-        <div class="user-actions">
-            <div class="language-selector"><span>ID</span></div>
-            
+        <div class="navbar-user-section">
             @auth
-    <div class="dropdown ms-3">
-        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark fw-bold" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            Halo, {{ Auth::user()->full_name }}
-        </a>
-        
-        <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser1">
-            <li>
-                <a class="dropdown-item" href="{{ route('profile.edit') }}">
-                    <i class="bi bi-person-gear me-2"></i> Edit Profil
-                </a>
-            </li>
-            
-            <li><hr class="dropdown-divider"></li>
-            
-            <li>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="dropdown-item text-danger">
-                        <i class="bi bi-box-arrow-right me-2"></i> Logout
+                <div class="dropdown">
+                    <button class="btn btn-user dropdown-toggle" type="button" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle me-2"></i>Halo, {{ Auth::user()->full_name }}
                     </button>
-                </form>
-            </li>
-        </ul>
-    </div>
-@else
-    <div class="btn-login"><a href="{{ route('login') }}">Login</a></div>
-    <div class="btn-register"><a href="{{ route('register') }}">Daftar</a></div>
-@endauth
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser1">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                <i class="bi bi-person-gear me-2"></i>Edit Profil
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST" class="m-0">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-danger">
+                                    <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            @else
+                <a href="{{ route('login') }}" class="btn-login">Login</a>
+                <a href="{{ route('register') }}" class="btn-register">Daftar</a>
+            @endauth
         </div>
     </div>
     @yield('content')
@@ -113,9 +108,7 @@
             </div>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/webdonasi.js') }}"></script>
     
     @stack('scripts')

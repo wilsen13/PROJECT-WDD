@@ -1,12 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Foundation\Validation\ValidatesRequests;
 class ProfileController extends Controller
 {
    
@@ -61,8 +62,8 @@ class ProfileController extends Controller
 
         if ($request->hasFile('profile_pic')) {
             // untuk menghapus foto lama
-            if ($user->profile_photo_path && Storage::disk('public')->exists($user->profile_photo_path)) {
-                Storage::disk('public')->delete($user->profile_photo_path);
+            if ($user->profile_photo_path && Storage::disk('profile_pic')->exists($user->profile_photo_path)) {
+                Storage::disk('profile_pic')->delete($user->profile_photo_path);
             }
 
             // simpan foto ke folder yang ada 

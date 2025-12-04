@@ -11,25 +11,28 @@ class Transaction extends Model
 
     protected $table = 'transaction';
 
-    protected $fillable = [
-        'campaign_id',
-        'user_id',
-        'amount',
-        'payment_method',
-        'status',
-        'donor_name',
-        'donor_email',
-    ];
+    // Primary Key tabel kamu
+    protected $primaryKey = 'TransactionID';
+    const CREATED_AT = 'TanggalTransaksi';
+    const UPDATED_AT = null;
 
+    protected $fillable = [
+        'CampaignID',        
+        'user_id',           
+        'Jumlah',            
+        'MetodePembayaran',  
+        'StatusPembayaran',  
+        'NamaDonatur',       
+        'EmailDonatur',      
+    ];
 
     public function campaign()
     {
-        return $this->belongsTo(Campaign::class, 'campaign_id');
+        return $this->belongsTo(Campaign::class, 'CampaignID', 'CampaignID');
     }
-
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

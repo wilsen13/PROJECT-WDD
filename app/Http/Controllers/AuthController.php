@@ -40,9 +40,13 @@ class AuthController extends Controller
         // buat cek email dan password (validasi)
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
+            if (Auth::user()->role === 'admin') {
+                //kalau admin jadinya ke admin dashboard
+                return redirect()->route('admin.dashboard');
+            }
             
-            
-            return redirect()->intended('/'); // Ke homepage
+            return redirect()->intended('/'); // kalau member - ke homepage
         }
 
         // kalau gagal

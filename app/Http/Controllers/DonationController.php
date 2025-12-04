@@ -3,27 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Campaign;
 
 class DonationController extends Controller
 {
-    public function donate(Request $request)
-{
-
-    $count = session('donation_count', 0);
-    $total = session('total_donation', 0);
-
-    $count++;
-    $total += 50000;
-
-
-    session(['donation_count' => $count]);
-    session(['total_donation' => $total]);
-
-    $message = "Terima kasih donasi ke-$count";
-    if ($count == 1) {
-        $message = "Selamat! Donasi pertama dapat Tiket Umroh!";
+    public function index()
+    {
+        // Ambil semua campaign beserta info kategorinya
+        $campaigns = Campaign::with('category')->get();
+        
+        return view('donasi', compact('campaigns'));
     }
-
-    return back()->with('message', $message);
-}
+    
+    // Function untuk menampilkan detail pembayaran (Langkah selanjutnya)
+    public function showPayment($id)
+    {
+        $campaign = Campaign::findOrFail($id);
+        return view('payment', compact('campaign'));
+    }
 }
