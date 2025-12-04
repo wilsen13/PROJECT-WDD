@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\TransactionController; 
 
 
-// --- HALAMAN PUBLIC (Dilihat oleh user) ---
+// --- HALAMAN PUBLIC (dapat diliat oleh user) ---
 Route::get('/', function () { return view('index'); });
 Route::get('/donasi', [DonationController::class, 'index'])->name('donasi.index');
 Route::get('/news', function () { return view('news'); });
@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// --- GROUP ROUTE KHUSUS ADMIN ---
+// --- GROUP ROUTE ADMIN ---
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     
     // Dashboard Admin

@@ -19,7 +19,7 @@ class TransactionController extends Controller
             'payment_method' => 'required',
         ]);
 
-        // Gunakan DB Transaction agar data konsisten
+
         DB::transaction(function () use ($request) {
             
             Transaction::create([
@@ -28,7 +28,6 @@ class TransactionController extends Controller
                 'Jumlah'            => $request->amount,      
                 'StatusPembayaran'  => 'success', 
                 'MetodePembayaran'  => $request->payment_method,
-
                 'NamaDonatur'       => Auth::user()->full_name,
                 'EmailDonatur'      => Auth::user()->email,
             ]);
