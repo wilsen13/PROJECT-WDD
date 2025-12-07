@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
     // Upload Foto Profil
     Route::post('/profile/photo', [ProfileController::class, 'uploadPhoto'])->name('profile.upload-photo');
 
-    // Logout khusus member (opsional jika ingin route bernama 'logout' di dalam auth)
+    // Logout khusus member 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Halaman Form Pembayaran (Setelah klik Donasi Sekarang)

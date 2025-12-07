@@ -1,0 +1,1 @@
+Kalau ingin melihat card donasi, bisa import database terlebih dahulu agar card nya muncul (terkoneksi dengan database). Terima Kasih
