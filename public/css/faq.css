@@ -11,7 +11,6 @@ body {
     background-color: #f8f9fa;
 }
 
-/* biar navbar nempel diatas */ 
 .navbar { position: static; }
 
 body .navbar { position: static; top: auto; }
