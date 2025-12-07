@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Storage;
 
 class CampaignController extends Controller
 {
-    // MENAMPILKAN DAFTAR CAMPAIGN (Agar bisa diedit/hapus)
+    // daftar campaign bisa di edit dan dihapus
     public function index()
     {
-        $campaigns = Campaign::with('category')->latest()->get();
-        return view('admin.campaigns.index', compact('campaigns'));
+        $campaigns = Campaign::with('category')->orderBy('CampaignID', 'desc')->get();
+        return view('admin.dashboard', compact('campaigns'));
     }
 
     public function create()
@@ -51,10 +51,10 @@ class CampaignController extends Controller
             'Deskripsi' => $request->Deskripsi,
             'TargetDana' => $request->TargetDana,
             'DanaTerkumpul' => 0, 
-            'ImageURL' => $path, // Simpan nama file saja
+            'ImageURL' => $path,
         ]);
 
-        return redirect()->route('admin.campaigns.index')->with('success', 'Program Donasi Berhasil Dibuat!');
+        return redirect()->route('admin.dashboard')->with('success', 'Program Donasi Berhasil Dibuat!');
     }
 
     // MENGHAPUS CAMPAIGN
@@ -62,11 +62,8 @@ class CampaignController extends Controller
     {
         $campaign = Campaign::findOrFail($id);
         
-        // Hapus gambar jika ada (Opsional)
-        // Storage::delete('public/image/' . $campaign->ImageURL);
-
         $campaign->delete();
 
-        return redirect()->route('admin.campaigns.index')->with('success', 'Program berhasil dihapus!');
+        return redirect()->route('admin.dashboard')->with('success', 'Program berhasil dihapus!');
     }
 }

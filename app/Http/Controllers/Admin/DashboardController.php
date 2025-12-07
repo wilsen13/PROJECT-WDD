@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Campaign;
 use App\Models\Transaction; 
-use App\Models\News; // Jangan lupa import Model News
+use App\Models\News; 
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -21,12 +21,12 @@ class DashboardController extends Controller
         $totalDonasi = Transaction::sum('Jumlah'); 
         
         
-        $recentTransactions = Transaction::with(['users', 'campaign'])
+        $recentTransactions = Transaction::with(['user', 'campaign'])
                                 ->latest('TanggalTransaksi') // Urutkan dari yg terbaru
                                 ->take(5)
                                 ->get();
 
-        $campaigns = Campaign::latest()->take(5)->get();
+        $campaigns = Campaign::orderBy('CampaignID', 'desc')->take(5)->get();
 
        
         $news = News::latest('created_at')->take(5)->get();

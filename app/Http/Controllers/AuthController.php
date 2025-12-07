@@ -53,6 +53,20 @@ class AuthController extends Controller
         return back()->with('error', 'Email atau password salah.');
     }
 
+    public function redirectTo()
+{
+    // Mengakses user yang sedang login
+    $role = auth()->user()->role; 
+
+    // Cek Role
+    if ($role === 'admin') {
+        return route('admin.dashboard'); 
+    }
+
+    // Jika member
+    return '/'; 
+}
+
     
     public function logout(Request $request)
     {

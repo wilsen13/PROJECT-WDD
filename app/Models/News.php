@@ -9,7 +9,7 @@ class News extends Model
 {
     use HasFactory;
     
- 
+
     protected $table = 'news';
     protected $primaryKey = 'newsID';
     const UPDATED_AT = null;

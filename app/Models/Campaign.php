@@ -11,7 +11,7 @@ class Campaign extends Model
 
     protected $table = 'campaign'; // Sesuaikan nama tabel
     protected $primaryKey = 'CampaignID'; // Custom Primary Key
-     public $timestamps = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'user_id', 'CategoryID', 'Judul', 'Deskripsi', 

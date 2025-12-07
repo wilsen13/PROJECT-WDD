@@ -137,7 +137,7 @@
 
     </div>
 
-    <!-- 4. KELOLA BERITA (Full Width di Bawah) -->
+ 
     <div class="card border-0 shadow-sm mt-4">
         <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
             <h5 class="mb-0 fw-bold text-dark">Berita & Video Terbaru</h5>
@@ -163,6 +163,7 @@
                             <td>
                                 <a href="{{ $n->VideoURL }}" target="_blank" class="text-decoration-none text-danger">
                                     <i class="bi bi-youtube"></i> Tonton
+                                    
                                 </a>
                             </td>
                             <td>{{ Str::limit($n->Deskripsi, 50) }}</td>

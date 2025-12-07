@@ -46,7 +46,7 @@
             <h4 class="mb-0 font-weight-bold">Tambah Berita Video</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.campaigns.store') }}" method="POST">
+            <form action="{{ route('admin.news.store') }}" method="POST">
                 @csrf
                 
                 <div class="mb-3">
@@ -79,4 +79,3 @@
 
 
 
-@endsection
