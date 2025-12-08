@@ -74,7 +74,7 @@
                                         <small class="text-muted">{{ $t->EmailDonatur }}</small>
                                     </td>
                                     <td>
-                                        <!-- Menampilkan Judul Campaign (Dibatasi agar tidak panjang) -->
+                    
                                         {{ Str::limit($t->campaign->Judul ?? 'Campaign Dihapus', 30) }}
                                     </td>
                                     <td class="fw-bold text-success">
@@ -99,7 +99,7 @@
             </div>
         </div>
 
-        <!-- 3. KELOLA CAMPAIGN (Kanan/Bawah) -->
+        KELOLA CAMPAIGN 
         <div class="col-lg-4">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">

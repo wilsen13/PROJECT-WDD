@@ -44,7 +44,7 @@
                         <i class="bi bi-speedometer2 me-2"></i> Dashboard
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="bi bi-megaphone me-2"></i> Kelola Campaign
                     </a>
@@ -52,10 +52,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="bi bi-newspaper me-2"></i> Kelola Berita
-                    </a>
-                </li>
+                    </a> -->
+                <!-- </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('admin.users.index') }}">
                         <i class="bi bi-people me-2"></i> Data User
                     </a>
                 </li>

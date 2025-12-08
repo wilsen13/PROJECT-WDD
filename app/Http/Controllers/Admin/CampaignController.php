@@ -40,7 +40,7 @@ class CampaignController extends Controller
             // Simpan gambar, ambil nama filenya saja untuk disimpan di DB
             $file = $request->file('ImageURL');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/image', $filename); // Simpan di storage/app/public/image
+            $file->move(public_path('image'), $filename);
             $path = $filename;
         }
 
