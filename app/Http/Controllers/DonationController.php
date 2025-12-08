@@ -10,7 +10,7 @@ class DonationController extends Controller
     public function index()
     {
    
-        $campaigns = Campaign::with('category')->get();
+        $campaigns = Campaign::with('category') ->withCount('transactions') ->get();
         
         return view('donasi', compact('campaigns'));
     }

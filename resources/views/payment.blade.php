@@ -354,7 +354,7 @@
             }
         }
 
-        /* Responsive - Mobile */
+      
         @media (max-width: 480px) {
             .payment-overlay {
                 padding: 12px;
@@ -482,7 +482,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="payment-submit-btn">Lanjutkan Pembayaran</button>
+                    <button type="submit" class="payment-submit-btn">Bayar</button>
                 </form>
             </div>
         </div>

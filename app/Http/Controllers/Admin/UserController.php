@@ -13,7 +13,7 @@ class UserController extends Controller
         // mengambil semua data user
         $users = User::orderBy('id', 'desc')->get();
         
-        return view('admin.users.index', compact('users'));
+        return view('admin.user', compact('users'));
     }
 
     // untuk hapus user

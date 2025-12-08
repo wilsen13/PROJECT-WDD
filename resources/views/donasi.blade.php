@@ -59,7 +59,7 @@
                             <div class="donasi-stat-item">
                                 <div class="donasi-stat-label">Jumlah Donatur</div>
                                 <div class="donasi-stat-value">
-                                    {{ $campaign->DonorCount ?? 0 }} Donatur
+                                    {{ number_format($campaign->transactions_count) }} Donatur
                                 </div>
                             </div>
                         </div>

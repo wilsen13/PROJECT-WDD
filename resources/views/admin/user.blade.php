@@ -38,13 +38,13 @@
                             <td>{{ $user->id }}</td>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
-                                    <!-- Menampilkan Foto Profil Kecil -->
+                                    <!-- Menampilkan foto profil member -->
                                     @if($user->profile_photo_path)
                                         <img src="{{ asset('storage/' . $user->profile_photo_path) }}" class="rounded-circle" width="35" height="35" style="object-fit: cover;">
                                     @else
                                         <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}" class="rounded-circle" width="35" height="35">
                                     @endif
-                                    <span class="fw-bold">{{ $user->name }}</span>
+                                    <span class="fw-bold">{{ $user->full_name }}</span>
                                 </div>
                             </td>
                             <td>{{ $user->email }}</td>
@@ -59,7 +59,7 @@
                             <td>{{ $user->created_at ? $user->created_at->format('d M Y') : '-' }}</td>
                             <td>
                                 @if($user->role !== 'admin')
-                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus user ini? Semua data donasinya juga akan hilang/error.')">
+                                    <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus user ini? Semua data donasinya juga akan hilang/error.')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">

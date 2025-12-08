@@ -419,6 +419,9 @@
                         <button type="submit" class="btn btn-submit-profile">
                             Simpan Perubahan
                         </button>
+                         <a href="{{ route('password.edit') }}" class="btn-change-password">
+                                <i class="bi bi-shield-lock me-1"></i> Ganti Password
+                            </a>
                     </div>
                 </div>
             </div>

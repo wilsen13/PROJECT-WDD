@@ -51,6 +51,13 @@ Route::middleware('auth')->group(function () {
     
     // Proses Simpan Transaksi
     Route::post('/donasi/process', [TransactionController::class, 'store'])->name('transaction.store');
+
+    //update password
+    Route::get('/profile/password', [ProfileController::class, 'editPassword'])->name('password.edit');
+    Route::patch('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
+
+    //donasi sukses
+    Route::get('/donasi/sukses/{id}', [TransactionController::class, 'success'])->name('success');
 });
 
 
@@ -65,7 +72,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     // News
     Route::resource('news', AdminNewsController::class);
+    //kelola data user (oleh admin)
+    Route::get('/users', [UserController::class, 'index'])->name('user');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-});
+}); 

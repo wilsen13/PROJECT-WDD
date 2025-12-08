@@ -55,7 +55,7 @@
                     </a> -->
                 <!-- </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.users.index') }}">
+                    <a class="nav-link" href="{{ route('admin.user') }}">
                         <i class="bi bi-people me-2"></i> Data User
                     </a>
                 </li>

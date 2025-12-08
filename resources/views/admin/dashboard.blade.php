@@ -99,7 +99,6 @@
             </div>
         </div>
 
-        KELOLA CAMPAIGN 
         <div class="col-lg-4">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">

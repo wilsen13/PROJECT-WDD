@@ -23,10 +23,16 @@ class Campaign extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    
 
     // Relasi ke Kategori
     public function category()
     {
         return $this->belongsTo(CategoryCampaign::class, 'CategoryID', 'CategoryCampaignID');
+    }
+    public function transactions()
+    {
+      
+        return $this->hasMany(Transaction::class, 'CampaignID', 'CampaignID');
     }
 }
