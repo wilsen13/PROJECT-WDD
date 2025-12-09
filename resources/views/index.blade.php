@@ -1,8 +1,9 @@
 @extends('layouts.main')
-
 @section('title', 'Home - SatuHati')
+@section('keywords', 'SatuHati, Donasi')
 
 @section('content')
+
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
