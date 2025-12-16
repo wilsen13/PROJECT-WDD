@@ -1,0 +1,715 @@
+/* Responsive navbar */
+.search-container-desktop {
+    flex: 1;
+    margin: 0 15px;
+    position: relative;
+    max-width: 300px;
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 101;
+}
+
+.burger-menu span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(14,165,148,.98) 0%, rgba(11,127,93,.98) 100%);
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 70px;
+    z-index: 100;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    left: 0;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu-header h3 {
+    color: white;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.mobile-search-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.mobile-search-container .search-bar {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    font-size: 14px;
+    outline: none;
+}
+
+.mobile-search-container .search-bar:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 1);
+}
+
+.mobile-search-container .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    margin-top: 5px;
+}
+
+.mobile-search-container .search-results.show {
+    display: block;
+}
+
+.mobile-nav-link {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.mobile-nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 20px;
+}
+
+.mobile-menu-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 15px 0;
+}
+
+.mobile-logout-form {
+    width: 100%;
+}
+
+.mobile-btn-login,
+.mobile-btn-register {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-btn-login {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mobile-btn-login:hover {
+    background: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    color: white;
+}
+
+.mobile-btn-register {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.mobile-btn-register:hover {
+    background: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+
+/* Tampilan dekstop */
+@media (min-width: 993px) {
+    .navbar {
+        padding: 15px 40px;
+        min-height: 70px;
+    }
+    
+    .burger-menu {
+        display: none !important;
+    }
+    
+    .mobile-menu {
+        display: none !important;
+    }
+    
+    .navbar .nav-links {
+        display: flex !important;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .navbar-user-section {
+        display: flex !important;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .search-container-desktop {
+        display: block !important;
+        max-width: 300px;
+        margin: 0 20px;
+    }
+}
+
+/* untuk tampilan tablet/ipad */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 12px 20px;
+        min-height: 60px;
+    }
+    
+    .search-container-desktop {
+        max-width: 200px;
+        margin: 0 10px;
+    }
+    
+    .search-bar {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .brand-name {
+        font-size: 18px;
+    }
+    
+    .navbar .nav-links {
+        gap: 15px;
+    }
+    
+    .navbar .nav-links a {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .navbar-user-section {
+        gap: 10px;
+    }
+    
+    .btn-user {
+        padding: 6px 12px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .btn-login,
+    .btn-register {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* untuk tampilan mobile phone */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+        min-height: 60px;
+        position: relative;
+        justify-content: space-between;
+        gap: 0;
+    }
+    
+    .burger-menu {
+        display: flex;
+        order: 10;
+        margin-left: auto;
+    }
+    
+    .brand {
+        flex: 0 0 auto;
+        order: 1;
+    }
+    
+    .brand-name {
+        font-size: 16px;
+    }
+    
+    .logo {
+        width: 45px;
+        height: 45px;
+        margin-right: 10px;
+    }
+    
+    .logo img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .search-container-desktop {
+        display: none !important;
+    }
+    
+    .navbar .nav-links {
+        display: none !important;
+    }
+    
+    .navbar-user-section {
+        display: none !important;
+    }
+    
+    .mobile-menu {
+        display: flex;
+    }
+    
+    /* Hero Section */
+    .hero {
+        height: 50vh;
+        padding: 13px;
+        min-height: 300px;
+    }
+    
+    .hero-content {
+        padding: 0 20px;
+        max-width: 100%;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 14px;
+    }
+    
+    .btn-cta {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+    
+    /* Main Container */
+    .container.main-section {
+        margin: 30px auto;
+        padding: 15px 15px;
+        border-radius: 12px;
+    }
+    
+    .section-heading {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    /* Cards */
+    .main-section .cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .main-section .card {
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+    
+    .main-section .card img {
+        height: 180px;
+    }
+    
+    .card-body h3 {
+        font-size: 16px;
+    }
+    
+    .card-body p {
+        font-size: 13px;
+    }
+    
+    /* Video Section */
+    .video-section {
+        padding: 40px 15px;
+    }
+    
+    .video-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .video-side-caption {
+        font-size: 18px;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+        padding: 20px 15px 50px;
+    }
+    
+    .cta-wrap {
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+    
+    .cta-heading {
+        font-size: 22px;
+    }
+    
+    .cta-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+    
+    /* News Page */
+    .news-container {
+        margin: 20px auto 60px;
+        padding: 0 15px;
+    }
+    
+    .news-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .news-title {
+        font-size: 18px;
+    }
+    
+    .news-desc {
+        font-size: 14px;
+    }
+    
+    .news-hero {
+        padding: 30px 15px 20px;
+        margin: 10px 0 20px;
+    }
+    
+    .news-page-title {
+        font-size: 24px;
+    }
+    
+    .news-page-subtitle {
+        font-size: 14px;
+    }
+    
+    .news-section-heading {
+        font-size: 18px;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 40px 0 15px !important;
+    }
+    
+    footer div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    footer h4 {
+        font-size: 16px;
+        margin-bottom: 15px !important;
+    }
+    
+    footer li {
+        font-size: 13px;
+    }
+    
+    /* Forms */
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    .border.rounded {
+        margin: 15px 0;
+        border-radius: 12px !important;
+    }
+    
+    h2 {
+        font-size: 22px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .form-group {
+        margin-bottom: 15px !important;
+    }
+    
+    .form-control {
+        padding: 10px 12px !important;
+        font-size: 13px !important;
+    }
+    
+    .btn-primary,
+    .btn-success {
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+    }
+    
+    .btn-block {
+        margin-top: 15px;
+    }
+    
+    .register-link-text {
+        font-size: 12px !important;
+    }
+}
+
+/* SMALL PHONES (Below 480px) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 8px 12px;
+        min-height: 55px;
+    }
+    
+    .brand-name {
+        font-size: 14px;
+    }
+    
+    .logo {
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+    }
+    
+    .logo img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .burger-menu {
+        gap: 4px;
+    }
+    
+    .burger-menu span {
+        width: 22px;
+        height: 2.5px;
+    }
+    
+    /* Mobile Menu adjustments */
+    .mobile-menu {
+        padding: 15px;
+        padding-top: 65px;
+    }
+    
+    .mobile-menu-header {
+        margin-bottom: 15px;
+    }
+    
+    .mobile-menu-header h3 {
+        font-size: 18px;
+    }
+    
+    /* Hero */
+    .hero {
+        height: 45vh;
+        min-height: 280px;
+        padding: 10px;
+    }
+    
+    .hero-content {
+        padding: 0 15px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .eyebrow {
+        font-size: 12px;
+    }
+    
+    .hero-subtitle {
+        font-size: 13px;
+    }
+    
+    .btn-cta {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    /* Main Section */
+    .container.main-section {
+        margin: 20px auto;
+        padding: 12px 12px;
+    }
+    
+    .section-heading {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    .main-section .card {
+        margin-bottom: 12px;
+    }
+    
+    .main-section .card img {
+        height: 150px;
+    }
+    
+    .card-body h3 {
+        font-size: 15px;
+        margin: 6px 0 4px;
+    }
+    
+    .card-body p {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+    
+    .image-badge {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+    
+    /* Video Section */
+    .video-section {
+        padding: 30px 12px;
+    }
+    
+    .video-side-caption {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    .video-title {
+        font-size: 20px;
+    }
+    
+    /* CTA */
+    .cta-wrap {
+        padding: 15px 12px;
+        margin-bottom: 20px;
+    }
+    
+    .cta-heading {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .cta-sub {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .cta-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    /* News */
+    .news-container {
+        margin: 15px auto 50px;
+        padding: 0 12px;
+    }
+    
+    .news-card {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .news-title {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    
+    .news-desc {
+        font-size: 13px;
+    }
+    
+    .news-page-title {
+        font-size: 22px;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 30px 0 10px !important;
+    }
+    
+    footer h4 {
+        font-size: 14px;
+        margin-bottom: 12px !important;
+    }
+    
+    footer li {
+        font-size: 12px;
+        margin-bottom: 8px !important;
+    }
+    
+    /* Forms */
+    h2 {
+        font-size: 20px !important;
+        margin-bottom: 18px !important;
+    }
+    
+    .form-control {
+        padding: 8px 10px !important;
+        font-size: 12px !important;
+    }
+    
+    .btn-primary,
+    .btn-success {
+        padding: 8px 18px !important;
+        font-size: 12px !important;
+    }
+}

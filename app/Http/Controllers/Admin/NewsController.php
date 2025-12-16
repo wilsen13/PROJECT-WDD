@@ -28,7 +28,7 @@ class NewsController extends Controller
         $request->validate([
             'Judul'     => 'required|string|max:255',
             'Deskripsi' => 'required',
-            'VideoURL'  => 'required|url', // Wajib format Link
+            'VideoURL'  => ['required', 'url', 'regex:/^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/']
         ]);
 
         News::create([
@@ -38,7 +38,7 @@ class NewsController extends Controller
             'VideoURL'  => $request->VideoURL,
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Berita berhasil diterbitkan!');
+        return redirect()->back()->with('success', 'Berita berhasil diterbitkan!');
     }
 
     // untuk menghapus berita
@@ -46,6 +46,6 @@ class NewsController extends Controller
     {
         $news = News::findOrFail($id);
         $news->delete();
-        return redirect()->route('admin.dashboard')->with('success', 'Berita dihapus!');
+        return redirect()->back()->with('success', 'Berita Berhasil dihapus!');
     }
 }

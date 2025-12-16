@@ -7,7 +7,7 @@
     <!-- 1. KARTU STATISTIK -->
     <div class="row g-4 mb-5">
         <!-- Total Donasi -->
-        <div class="col-md-4">
+        <div class="col-md-4 col-12">
             <div class="card border-0 shadow-sm bg-primary text-white h-100">
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div>
@@ -20,7 +20,7 @@
         </div>
 
         <!-- Program Aktif -->
-        <div class="col-md-4">
+        <div class="col-md-4 col-12">
             <div class="card border-0 shadow-sm bg-success text-white h-100">
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div>
@@ -33,7 +33,7 @@
         </div>
 
         <!-- Total Donatur -->
-        <div class="col-md-4">
+        <div class="col-md-4 col-12">
             <div class="card border-0 shadow-sm bg-warning text-dark h-100">
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div>
@@ -48,8 +48,8 @@
 
     <div class="row g-4">
         
-        <!-- 2. TABEL TRANSAKSI TERBARU (Kiri/Atas) -->
-        <div class="col-lg-8">
+        <!-- 2. TABEL TRANSAKSI TERBARU -->
+        <div class="col-lg-8 col-12">
             <div class="card border-0 shadow-sm h-100">
                 <div class="card-header bg-white py-3">
                     <h5 class="mb-0 fw-bold text-dark">Transaksi Donasi Terbaru</h5>
@@ -74,7 +74,6 @@
                                         <small class="text-muted">{{ $t->EmailDonatur }}</small>
                                     </td>
                                     <td>
-                    
                                         {{ Str::limit($t->campaign->Judul ?? 'Campaign Dihapus', 30) }}
                                     </td>
                                     <td class="fw-bold text-success">
@@ -99,9 +98,23 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <!-- 3. DAFTAR PROGRAM DONASI -->
+        <div class="col-lg-4 col-12">
+             @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+            <strong></strong> {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+            <strong>Gagal!</strong> {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif 
             <div class="card border-0 shadow-sm h-100">
-                <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
                     <h5 class="mb-0 fw-bold text-dark">Program Donasi</h5>
                     <a href="{{ route('admin.campaigns.create') }}" class="btn btn-sm btn-primary">+ Tambah</a>
                 </div>
@@ -136,9 +149,9 @@
 
     </div>
 
- 
+    <!-- 4. BERITA & VIDEO TERBARU -->
     <div class="card border-0 shadow-sm mt-4">
-        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
             <h5 class="mb-0 fw-bold text-dark">Berita & Video Terbaru</h5>
             <a href="{{ route('admin.news.create') }}" class="btn btn-sm btn-primary">
                 <i class="bi bi-plus-circle"></i> Tulis Berita
@@ -162,7 +175,6 @@
                             <td>
                                 <a href="{{ $n->VideoURL }}" target="_blank" class="text-decoration-none text-danger">
                                     <i class="bi bi-youtube"></i> Tonton
-                                    
                                 </a>
                             </td>
                             <td>{{ Str::limit($n->Deskripsi, 50) }}</td>

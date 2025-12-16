@@ -8,6 +8,19 @@
 @section('content')
 <main class="container mt-4">
     <form class="border p-4 rounded" action="{{ url('/login') }}" method="POST">
+        @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+            <strong></strong> {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    <!-- @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+            <strong>Gagal!</strong> {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif -->
         @csrf
         <h2 class="mb-4">Login Akun</h2>
 

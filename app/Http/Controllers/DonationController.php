@@ -21,4 +21,17 @@ class DonationController extends Controller
         $campaign = Campaign::findOrFail($id);
         return view('payment', compact('campaign'));
     }
+
+    public function search(Request $request)
+{
+    $query = $request->input('query');
+
+    // search function
+    $campaigns = Campaign::where('Judul', 'LIKE', "%{$query}%")
+                         ->latest()
+                         ->take(5) 
+                         ->get();
+
+    return response()->json($campaigns);
+}
 }

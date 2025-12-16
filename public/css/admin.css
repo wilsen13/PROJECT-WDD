@@ -1,0 +1,394 @@
+
+
+.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* STAT CARDS */
+.card-stat {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.card-body {
+    word-break: break-word;
+}
+
+/* TABLE RESPONSIVE */
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead {
+    background-color: #f8f9fa;
+}
+
+.table-hover tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* LIST GROUP */
+.list-group-flush {
+    border-radius: 0;
+}
+
+.list-group-item {
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* BUTTONS */
+.btn-sm {
+    font-size: 12px;
+    padding: 6px 10px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+}
+
+/* header card */
+.card-header {
+    border-bottom: 1px solid #e9ecef;
+    background-color: #ffffff;
+}
+
+/* text */
+.fw-bold {
+    font-weight: 600;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+/*responsive design*/
+
+@media (max-width: 992px) {
+    .container-fluid {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .row.g-4 {
+        gap: 1rem !important;
+    }
+
+    /* menumpuk stats card dengan membuat 2 kolom */
+    .col-md-4 {
+        flex: 0 0 calc(50% - 0.5rem);
+    }
+
+    .col-lg-8 {
+        flex: 0 0 100%;
+    }
+
+    .col-lg-4 {
+        flex: 0 0 100%;
+        margin-top: 20px;
+    }
+
+    .card-body h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-body h6 {
+        font-size: 0.75rem;
+    }
+
+    /* Adjust table font size */
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .table th, .table td {
+        padding: 0.6rem 0.5rem;
+    }
+}
+
+/* untuk tampilan mobile phones */
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* Header */
+    h2.mb-4 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Stat Cards - satu kolom */
+    .row.g-4.mb-5 {
+        gap: 0.75rem !important;
+    }
+
+    .col-md-4 {
+        flex: 0 0 100%;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-body h2 {
+        font-size: 1.3rem;
+    }
+
+    .card-body h6 {
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-body .fs-1 {
+        font-size: 1.5rem !important;
+    }
+
+    /* Main Row */
+    .col-lg-8 {
+        flex: 0 0 100%;
+        margin-bottom: 1rem;
+    }
+
+    .col-lg-4 {
+        flex: 0 0 100%;
+    }
+
+    /* Table Adjustments */
+    .table-responsive {
+        border-radius: 0;
+        margin-left: -10px;
+        margin-right: -10px;
+        padding: 0 10px;
+    }
+
+    .table {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .table th, .table td {
+        padding: 0.5rem 0.3rem;
+    }
+
+    .table th {
+        font-weight: 600;
+    }
+
+
+    .table td:nth-child(2),
+    .table th:nth-child(2) {
+        display: none;
+    }
+
+    /* Card Header */
+    .card-header {
+        padding: 0.8rem;
+    }
+
+    .card-header h5 {
+        font-size: 0.95rem;
+        margin-bottom: 0;
+    }
+
+    .card-header .btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    /* List Group  */
+    .list-group-item {
+        padding: 0.8rem;
+    }
+
+    .list-group-item img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .list-group-item div {
+        gap: 0.5rem !important;
+    }
+
+    .list-group-item .fw-bold {
+        font-size: 0.85rem;
+    }
+
+    .list-group-item small {
+        font-size: 0.7rem;
+    }
+
+    .list-group-item .btn-sm {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    /* Button */
+    .btn-sm {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    .d-flex.justify-content-between {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .align-items-center {
+        align-items: flex-start !important;
+    }
+
+    /* Spacing */
+    .py-4 {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .px-3 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    .mb-2 {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .gap-3 {
+        gap: 0.5rem !important;
+    }
+
+    .gap-4 {
+        gap: 0.75rem !important;
+    }
+
+    .me-2 {
+        margin-right: 0.3rem !important;
+    }
+
+    .me-3 {
+        margin-right: 0.5rem !important;
+    }
+
+    /* Card  */
+    .card {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    }
+
+    .card.border-0 {
+        margin-bottom: 1rem;
+    }
+
+    /* Typography */
+    .fw-bold {
+        font-weight: 600;
+    }
+
+    .text-dark {
+        color: #212529;
+    }
+
+    /* Badge */
+    .badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    /* Links */
+    a.text-decoration-none {
+        font-size: 0.85rem;
+    }
+}
+
+/*untuk ukuran layar kurang dari 480px*/
+
+@media (max-width: 480px) {
+    h2.mb-4 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .card-body h2 {
+        font-size: 1.1rem;
+    }
+
+    .card-body h6 {
+        font-size: 0.65rem;
+    }
+
+    .card-body .fs-1 {
+        font-size: 1.25rem !important;
+    }
+
+    .table {
+        font-size: 0.75rem;
+    }
+
+    .table th, .table td {
+        padding: 0.4rem 0.2rem;
+    }
+
+    .card-header h5 {
+        font-size: 0.9rem;
+    }
+
+    .list-group-item .fw-bold {
+        font-size: 0.8rem;
+    }
+
+    .list-group-item small {
+        font-size: 0.65rem;
+    }
+
+    .btn-sm {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    .py-4 {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    .px-3 {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    .gap-3 {
+        gap: 0.3rem !important;
+    }
+
+    .gap-4 {
+        gap: 0.5rem !important;
+    }
+}

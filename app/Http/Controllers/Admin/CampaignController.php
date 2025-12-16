@@ -27,6 +27,7 @@ class CampaignController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'Judul' => 'required|string|max:255',
             'CategoryID' => 'required|integer',
@@ -54,7 +55,7 @@ class CampaignController extends Controller
             'ImageURL' => $path,
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Program Donasi Berhasil Dibuat!');
+        return redirect()->back()->with('success', 'Program Donasi Berhasil Dibuat!');
     }
 
     // MENGHAPUS CAMPAIGN
@@ -64,6 +65,6 @@ class CampaignController extends Controller
         
         $campaign->delete();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Program berhasil dihapus!');
+        return redirect()->back()->with('success', 'Program berhasil dihapus!');
     }
 }

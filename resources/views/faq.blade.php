@@ -65,7 +65,7 @@
     <section class="cta-section">
         <h2>Masih Butuh Bantuan?</h2>
         <p>Jika Anda tidak menemukan jawaban yang Anda cari, jangan ragu untuk menghubungi tim support kami.</p>
-        <a href="https://wa.me/6281234567890" target="blank" class="cta-button"><i class="bi bi-whatsapp"></i>Hubungi Kami</a>
+        <a href="https://wa.me/6281234567890" target="blank" class="cta-button"> <i class="bi bi-whatsapp"></i>Hubungi Kami</a>
     </section>
 
     @push('scripts')

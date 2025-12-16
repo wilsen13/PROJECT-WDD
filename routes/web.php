@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\UserController;
 
 
+
+
 // --- HALAMAN PUBLIC (dapat diliat oleh user) ---
 Route::get('/', function () { return view('index'); });
 Route::get('/donasi', [DonationController::class, 'index'])->name('donasi.index');
@@ -19,6 +21,7 @@ Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/about', function () { return view('aboutus'); });  
 Route::get('/faq', function () { return view('faq'); });
 Route::get('/contact', function () { return view('contact'); });
+Route::get('/search/donations', [DonationController::class, 'search'])->name('donations.search');
 
 // --- HALAMAN AUTH (Login/Register) ---
 Route::get('/login', function () { return view('login'); })->name('login');
