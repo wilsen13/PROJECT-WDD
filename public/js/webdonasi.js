@@ -1,5 +1,5 @@
 // Function Untuk Password hide dan show 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializePasswordToggle();
     initializeCounters();
     initializeAboutReveal();
@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSearch();
 });
 
-// === SEARCH FUNCTIONALITY (DATABASE VERSION) ===
+
 function initializeSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
-    
+
     if (!searchInput || !searchResults) return;
-    
+
 
     if (searchInput.parentElement) {
         searchInput.parentElement.style.position = 'relative';
@@ -22,59 +22,59 @@ function initializeSearch() {
 
     Object.assign(searchResults.style, {
         position: 'absolute',
-        top: '100%',        
+        top: '100%',
         left: '0',
-        width: '100%',    
-        zIndex: '9999',     
+        width: '100%',
+        zIndex: '9999',
         backgroundColor: '#ffffff',
-        boxShadow: '0 10px 25px rgba(0,0,0,0.1)', 
+        boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
         borderRadius: '0 0 10px 10px',
         maxHeight: '350px',
-        overflowY: 'auto',  
+        overflowY: 'auto',
         border: '1px solid #eee',
-        display: 'none'    
+        display: 'none'
     });
-    
+
     let searchTimeout;
-    
-    searchInput.addEventListener('input', function() {
+
+    searchInput.addEventListener('input', function () {
         clearTimeout(searchTimeout);
         const query = this.value.trim();
-        
+
         if (query.length < 2) {
             searchResults.style.display = 'none';
-            // searchResults.classList.remove('show'); // Hapus class dependency
+
             return;
         }
-        
-        // Debounce 300ms agar tidak spam request ke server
+
+
         searchTimeout = setTimeout(() => {
             fetchDonations(query, searchResults);
         }, 300);
     });
-    
-    // Handle Enter key (Redirect ke halaman pencarian global)
-    searchInput.addEventListener('keypress', function(e) {
+
+
+    searchInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             const query = this.value.trim();
-            e.preventDefault(); 
+            e.preventDefault();
             if (query.length > 0) {
                 window.location.href = `/donasi?search=${encodeURIComponent(query)}`;
             }
         }
     });
-    
-    // Sembunyikan hasil saat klik di luar area search
-    document.addEventListener('click', function(e) {
+
+
+    document.addEventListener('click', function (e) {
         if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
             searchResults.style.display = 'none';
         }
     });
 }
 
-// Fungsi Fetch Data dari Laravel
+
 function fetchDonations(query, container) {
-    // Pastikan route '/search/donations' sudah dibuat di Laravel (web.php)
+
     fetch(`/search/donations?query=${encodeURIComponent(query)}`)
         .then(response => {
             if (!response.ok) throw new Error('Network response');
@@ -89,7 +89,7 @@ function fetchDonations(query, container) {
         });
 }
 
-// Fungsi Tampilan Hasil Search (Jendela Kecil / Mini Card)
+
 function displaySearchResults(results, container, query) {
     if (results.length === 0) {
         container.innerHTML = `
@@ -98,17 +98,17 @@ function displaySearchResults(results, container, query) {
             </div>
         `;
     } else {
-        // Generate HTML untuk setiap hasil pencarian (Tampilan Mini Card)
+
         container.innerHTML = results.map(donation => {
-            // Setup URL Gambar & Link Detail
+
             const imageUrl = donation.ImageURL ? `/image/${donation.ImageURL}` : '/images/default.jpg';
-            const detailUrl = `/donasi/${donation.CampaignID}`; 
-            
-            // Hitung Persentase & Format Rupiah
+            const detailUrl = `/donasi?donation=${donation.CampaignID}`;
+
+
             const terkumpul = Number(donation.DanaTerkumpul) || 0;
-            const target = Number(donation.TargetDana) || 1; 
+            const target = Number(donation.TargetDana) || 1;
             const percentage = Math.min(100, Math.round((terkumpul / target) * 100));
-            
+
             const formatRupiah = new Intl.NumberFormat('id-ID', {
                 style: 'currency',
                 currency: 'IDR',
@@ -131,7 +131,7 @@ function displaySearchResults(results, container, query) {
                     
                     <!-- Kategori (Opsional) -->
                     <div style="font-size: 11px; color: #00a989; font-weight: 600; margin-bottom: 4px; text-transform: uppercase;">
-                        ${donation.category ? donation.category.Name : 'Donasi'}
+                        ${donation.category ? donation.category.NamaKategoriCampaign : 'Donasi'}
                     </div>
 
                     <!-- Progress Bar Kecil -->
@@ -145,16 +145,16 @@ function displaySearchResults(results, container, query) {
             </div>
             `;
         }).join('');
-        
-        // Tambahkan efek hover lewat JS event delegation (opsional tapi bagus utk UX)
+
+
         const items = container.querySelectorAll('.search-result-item');
         items.forEach(item => {
             item.addEventListener('mouseenter', () => item.style.background = '#f9f9f9');
             item.addEventListener('mouseleave', () => item.style.background = 'white');
         });
     }
-    
-    // Tampilkan Container secara eksplisit
+
+
     container.style.display = 'block';
 }
 
@@ -163,9 +163,9 @@ function handleDonationPageParams() {
     const urlParams = new URLSearchParams(window.location.search);
     const donationId = urlParams.get('donation');
     const searchQuery = urlParams.get('search');
-    
+
     if (donationId) {
-        const donationElement = document.getElementById(`donation-${donationId}`);
+        const donationElement = document.getElementById(`campaign-${donationId}`);
         if (donationElement) {
             donationElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
             donationElement.style.border = '3px solid #0ea594';
@@ -176,7 +176,7 @@ function handleDonationPageParams() {
             }, 5000);
         }
     }
-    
+
     if (searchQuery) {
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
@@ -186,7 +186,7 @@ function handleDonationPageParams() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     if (window.location.pathname.includes('donasi')) {
         handleDonationPageParams();
     }
@@ -199,39 +199,39 @@ function initializePasswordToggle() {
         container.className = 'password-toggle-container';
         input.parentNode.insertBefore(container, input);
         container.appendChild(input);
-        
+
         const toggleBtn = document.createElement('button');
         toggleBtn.type = 'button';
         toggleBtn.className = 'password-toggle-btn';
         toggleBtn.innerHTML = 'Show';
         toggleBtn.title = 'Tampilkan Password';
-        
+
         container.appendChild(toggleBtn);
-        toggleBtn.addEventListener('click', function() {
+        toggleBtn.addEventListener('click', function () {
             togglePassword(input, toggleBtn);
         });
     });
 }
 
-function initializeAboutReveal(){
+function initializeAboutReveal() {
     var targets = document.querySelectorAll('.reveal');
-    if(targets.length === 0) return;
-    if(!('IntersectionObserver' in window)){
-        targets.forEach(function(el){ el.classList.add('is-visible'); });
+    if (targets.length === 0) return;
+    if (!('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('is-visible'); });
         return;
     }
-    var io = new IntersectionObserver(function(entries, obs){
-        entries.forEach(function(entry){
-            if(entry.isIntersecting){
+    var io = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
                 obs.unobserve(entry.target);
             }
         });
     }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
-    targets.forEach(function(el){ io.observe(el); });
+    targets.forEach(function (el) { io.observe(el); });
 }
 
-function initializeGlobalReveal(){
+function initializeGlobalReveal() {
     var path = window.location.pathname;
     if (path.includes('login') || path.includes('daftar')) return; // Adjusted check
 
@@ -241,12 +241,12 @@ function initializeGlobalReveal(){
             '.container.main-section', '.cards', '.news-container',
             '.news-card', '.donasi-container', '.faq-section', '.cta-section'
         ];
-        candidates.forEach(function(sel){
-            document.querySelectorAll(sel).forEach(function(el){
+        candidates.forEach(function (sel) {
+            document.querySelectorAll(sel).forEach(function (el) {
                 if (!el.classList.contains('reveal')) el.classList.add('reveal');
             });
         });
-    } catch(e) { /* no-op */ }
+    } catch (e) { /* no-op */ }
 
     initializeAboutReveal();
 }
@@ -255,17 +255,17 @@ function initializeCounters() {
     var counters = document.querySelectorAll('.counter');
     if (counters.length === 0) return;
 
-    var formatNumber = function(num) {
+    var formatNumber = function (num) {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     };
 
-    var animate = function(el) {
+    var animate = function (el) {
         var target = parseInt(el.getAttribute('data-target') || '0', 10);
-        var duration = 1600; 
+        var duration = 1600;
         var start = 0;
         var startTime = null;
 
-        var step = function(timestamp) {
+        var step = function (timestamp) {
             if (!startTime) startTime = timestamp;
             var progress = Math.min((timestamp - startTime) / duration, 1);
             var current = Math.floor(progress * (target - start) + start);
@@ -278,8 +278,8 @@ function initializeCounters() {
     };
 
     if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries, obs) {
-            entries.forEach(function(entry) {
+        var observer = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     animate(entry.target);
                     obs.unobserve(entry.target);
@@ -287,9 +287,9 @@ function initializeCounters() {
             });
         }, { threshold: 0.2 });
 
-        counters.forEach(function(el) { observer.observe(el); });
+        counters.forEach(function (el) { observer.observe(el); });
     } else {
-        counters.forEach(function(el) { animate(el); });
+        counters.forEach(function (el) { animate(el); });
     }
 }
 
@@ -308,44 +308,44 @@ function togglePassword(input, button) {
 function openDonationModal(category) {
     const modal = document.getElementById('donationModal');
     const modalTitle = document.getElementById('donationModalTitle');
-    
+
     const titles = {
         'pendidikan': 'Donasi untuk Pendidikan',
         'kesehatan': 'Donasi untuk Kesehatan',
         'pangan': 'Donasi untuk Pangan'
     };
-    
+
     modalTitle.textContent = titles[category] || 'Donasi untuk Pendidikan';
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
 }
 
 function closeDonationModal() {
     const modal = document.getElementById('donationModal');
     modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; 
+    document.body.style.overflow = 'auto';
 }
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const modal = document.getElementById('donationModal');
     if (event.target === modal) {
         closeDonationModal();
     }
 });
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
         closeDonationModal();
     }
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const customAmountRadio = document.querySelector('input[value="custom"]');
     const customAmountInput = document.getElementById('customAmountInput');
-    
+
     if (customAmountRadio && customAmountInput) {
-        customAmountRadio.addEventListener('change', function() {
+        customAmountRadio.addEventListener('change', function () {
             if (this.checked) {
                 customAmountInput.style.display = 'block';
             } else {
@@ -353,10 +353,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     const donationForm = document.getElementById('donationForm');
     if (donationForm) {
-        donationForm.addEventListener('submit', function(event) {
+        donationForm.addEventListener('submit', function (event) {
         });
     }
 });
