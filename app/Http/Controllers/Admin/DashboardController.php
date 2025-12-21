@@ -26,10 +26,10 @@ class DashboardController extends Controller
                                 ->take(5)
                                 ->get();
 
-        $campaigns = Campaign::orderBy('CampaignID', 'desc')->take(5)->get();
+        $campaigns = Campaign::orderBy('CampaignID', 'desc')->get();
 
        
-        $news = News::latest('created_at')->take(5)->get();
+        $news = News::latest('created_at')->get();
 
         return view('admin.dashboard', compact(
             'totalUser', 

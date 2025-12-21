@@ -99,7 +99,7 @@
         </div>
 
         <!-- 3. DAFTAR PROGRAM DONASI -->
-        <div class="col-lg-4 col-12">
+        <div class="col-lg-4 col-12" style="max-height: 500px; overflow-y: auto;">
              @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
             <strong></strong> {{ session('success') }}
@@ -140,8 +140,9 @@
                     </div>
                     @if($campaigns->count() >= 5)
                         <div class="p-2 text-center">
-                            <a href="{{ route('admin.campaigns.index') }}" class="text-decoration-none small">Lihat Semua Campaign &rarr;</a>
-                        </div>
+                            
+                            <!-- <a href="{{ route('admin.campaigns.index') }}" class="text-decoration-none small">Lihat Semua Campaign &rarr;</a>
+                        </div> -->
                     @endif
                 </div>
             </div>
