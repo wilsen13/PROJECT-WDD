@@ -72,6 +72,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     // Campaign
     Route::resource('campaigns', CampaignController::class);
+    
 
     // News
     Route::resource('news', AdminNewsController::class);
