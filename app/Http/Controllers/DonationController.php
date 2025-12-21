@@ -23,15 +23,19 @@ class DonationController extends Controller
     }
 
     public function search(Request $request)
-{
-    $query = $request->input('query');
+    {
+        $query = $request->input('query');
 
-    // search function
-    $campaigns = Campaign::where('Judul', 'LIKE', "%{$query}%")
-                         ->latest()
-                         ->take(5) 
-                         ->get();
+        if (empty($query)) {
+            return response()->json([]);
+        }
 
-    return response()->json($campaigns);
-}
+        $campaigns = Campaign::with('category')
+                             ->where('Judul', 'LIKE', "%{$query}%")
+                             ->orderBy('CampaignID', 'desc')
+                             ->take(5) 
+                             ->get();
+
+        return response()->json($campaigns);
+    }
 }

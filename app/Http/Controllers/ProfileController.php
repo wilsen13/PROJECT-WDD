@@ -44,8 +44,7 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->no_telp = $request->no_telp;
 
-        // 4. LOGIKA SIMPAN FOTO (INI YANG KEMARIN HILANG)
-        // Kita cek: Apakah user upload file 'profile_pic'?
+        // cek: Apakah user upload file 'profile_pic'?
         if ($request->hasFile('profile_pic')) {
             
             // Hapus foto lama biar server gak penuh
@@ -71,7 +70,7 @@ class ProfileController extends Controller
         return view('password');
     }
 
-    // FUNGSI 3: Proses Ganti Password (Logic)
+    // Proses Ganti Password 
     public function updatePassword(Request $request)
     {
         $request->validate([

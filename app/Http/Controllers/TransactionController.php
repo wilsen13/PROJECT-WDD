@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
-    // 1. FUNGSI SIMPAN
+    // fungsi simpan
     public function store(Request $request)
     {
         $request->validate([
@@ -19,10 +19,9 @@ class TransactionController extends Controller
             'payment_method' => 'required',
         ]);
 
-        // Gunakan variabel ini untuk menangkap hasil transaksi dari dalam DB::transaction
         $result = DB::transaction(function () use ($request) {
             
-            // Simpan Data
+            // simpan data ke databsae
             $trx = Transaction::create([
                 'user_id'           => Auth::id(),
                 'CampaignID'        => $request->campaign_id,
@@ -33,14 +32,14 @@ class TransactionController extends Controller
                 'EmailDonatur'      => Auth::user()->email,
             ]);
 
-            // Update Saldo Campaign
+            // mengupdate saldo campaign
             $campaign = Campaign::where('CampaignID', $request->campaign_id)->first();
             if($campaign) {
                 $campaign->DanaTerkumpul += $request->amount; 
                 $campaign->save();
             }
 
-            // Kembalikan objek transaksi agar bisa dibaca di luar
+    
             return $trx; 
         });
 
@@ -48,13 +47,12 @@ class TransactionController extends Controller
         return redirect()->route('success', $result->TransactionID);
     }
 
-    // 2. FUNGSI TAMPILKAN HALAMAN SUKSES
+    // halaman setelah berhasil melakukan pembayaran
     public function success($id)
     {
-        // Cari data transaksi berdasarkan ID
+        //  mencari transaksi berdasarkan id
         $transaction = Transaction::with('campaign')->findOrFail($id);
 
-        // Validasi keamanan: Cek apakah yang akses adalah pemilik transaksi?
         if ($transaction->user_id != Auth::id()) {
             abort(403, 'Akses ditolak.');
         }

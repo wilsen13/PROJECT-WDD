@@ -9,8 +9,8 @@ class Campaign extends Model
 {
     use HasFactory;
 
-    protected $table = 'campaign'; // Sesuaikan nama tabel
-    protected $primaryKey = 'CampaignID'; // Custom Primary Key
+    protected $table = 'campaign'; 
+    protected $primaryKey = 'CampaignID'; 
     public $timestamps = false;
 
     protected $fillable = [

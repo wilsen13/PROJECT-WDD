@@ -25,7 +25,7 @@
                     $lebarBar = $persen > 100 ? 100 : $persen;
                 @endphp
 
-                <div class="donasi-card">
+                <div class="donasi-card" id="campaign-{{ $campaign->CampaignID }}">
                     <div class="donasi-card-image">
                         <span class="donasi-card-badge">
                             {{ $campaign->category->NamaKategoriCampaign ?? 'Umum' }}

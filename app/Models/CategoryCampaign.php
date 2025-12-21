@@ -14,7 +14,7 @@ class CategoryCampaign extends Model
 
     protected $fillable = ['NamaKategoriCampaign'];
 
-    // Relasi: Satu kategori bisa punya banyak campaign
+    // Satu kategori bisa punya banyak campaign
     public function campaigns()
     {
         return $this->hasMany(Campaign::class, 'CategoryID', 'CategoryCampaignID');
